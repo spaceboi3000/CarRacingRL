@@ -70,9 +70,8 @@ class Dreamer(nn.Module):
         # 1. The Components
         self.encoder = Encoder().to(device)
         self.decoder = Decoder(latent_dim=self.state_dim).to(device)
-        self.rssm = RSSM(action_dim=action_dim, 
-                        stochastic_size=stochastic_dim,
-                        deterministic_size=deterministic_dim).to(device)
+        self.rssm = RSSM(latent_dim=stochastic_dim, rnn_dim = deterministic_dim,
+                         action_dim=action_dim).to(device)
         
         # 2. Reward Predictor (q(r|s))
         self.reward_model = nn.Sequential(
