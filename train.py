@@ -90,6 +90,7 @@ _global_metrics_log = None
 _global_step = 0
 _global_episode = 0
 _save_dir = "checkpoints"
+_already_saved = False  # Prevent duplicate saves
 
 
 # ==============================================================================
@@ -105,17 +106,6 @@ def ensure_save_dir():
 
 def save_checkpoint(agent, metrics_log, global_step, episode, filename_prefix="dreamer", 
                     reason="checkpoint"):
-    """
-    Save model checkpoint and training log.
-    
-    Args:
-        agent: The Dreamer agent
-        metrics_log: Dictionary containing training metrics
-        global_step: Current training step
-        episode: Current episode number
-        filename_prefix: Prefix for saved files
-        reason: Why we're saving (for logging)
-    """
     ensure_save_dir()
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -144,16 +134,6 @@ def save_checkpoint(agent, metrics_log, global_step, episode, filename_prefix="d
 
 
 def load_checkpoint(agent, checkpoint_path):
-    """
-    Load model checkpoint and return training state.
-    
-    Args:
-        agent: The Dreamer agent to load weights into
-        checkpoint_path: Path to the checkpoint file
-        
-    Returns:
-        global_step, episode, metrics_log (or defaults if not found)
-    """
     if not os.path.exists(checkpoint_path):
         print(f"Checkpoint not found: {checkpoint_path}")
         return 0, 0, None
@@ -193,9 +173,13 @@ def load_checkpoint(agent, checkpoint_path):
 
 def emergency_save():
     """Emergency save function called on unexpected termination."""
-    global _global_agent, _global_metrics_log, _global_step, _global_episode
+    global _global_agent, _global_metrics_log, _global_step, _global_episode, _already_saved
+    
+    if _already_saved:
+        return  # Already saved, don't duplicate
     
     if _global_agent is not None:
+        _already_saved = True
         print("\n" + "="*60)
         print("EMERGENCY SAVE - Saving current state...")
         print("="*60)
@@ -710,6 +694,20 @@ def main():
                   f"model={recent_model_loss:.4f}, "
                   f"actor={recent_actor_loss:.4f}, "
                   f"critic={recent_critic_loss:.4f}")
+            
+            # Log training metrics (even if episode hasn't ended)
+            # This ensures we don't lose training data on interrupt
+            if 'train_step' not in metrics_log:
+                metrics_log['train_step'] = []
+                metrics_log['train_model_loss'] = []
+                metrics_log['train_actor_loss'] = []
+                metrics_log['train_critic_loss'] = []
+            
+            metrics_log['train_step'].append(global_step)
+            metrics_log['train_model_loss'].append(recent_model_loss)
+            metrics_log['train_actor_loss'].append(recent_actor_loss)
+            metrics_log['train_critic_loss'].append(recent_critic_loss)
+            _global_metrics_log = metrics_log
             
             # Periodic checkpoint save
             if global_step % SAVE_INTERVAL == 0:
