@@ -54,7 +54,7 @@ pip install matplotlib
 Or install all at once:
 
 ```bash
-pip install torch torchvision gymnasium[box2d] opencv-python numpy pandas matplotlib
+pip install torch torchvision "gymnasium[box2d]" opencv-python numpy pandas matplotlib
 ```
 
 ### Step 3: Verify Installation
