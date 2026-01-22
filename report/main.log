@@ -1,0 +1,1999 @@
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2026.1.22)  22 JAN 2026 23:34
+ restricted system commands enabled.
+ file:line:error style messages enabled.
+**/home/nick/Uni/CarRacingRL/report/main.tex
+(/home/nick/Uni/CarRacingRL/report/main.tex
+LaTeX2e <2022-11-01> patch level 1
+Lua module: luaotfload 2022-10-03 3.23 Lua based OpenType font support
+Lua module: lualibs 2022-10-04 2.75 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2022-10-04 2.75 ConTeXt Lua libraries -- extended collection.
+luaotfload | conf : Root cache directory is "/home/nick/.texlive2023/texmf-var/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2022-10-03.lua" from kpse-resolved path "/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/fontloader-2022-10-03.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.120
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "/home/nick/.texlive2023/texmf-var/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'. L3 programming layer <2023-02-22>
+Inserting `tracingstacklevels' in `input_level_string'. (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from /home/nick/.texlive2023/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen139
+) (./preamble/packages.tex (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2023-02-22 L3 programming layer (loader) 
+ (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2023-01-16 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count191
+\l__pdf_internal_box=\box51
+))
+Package: xparse 2023-02-02 L3 Experimental document command parser
+)
+Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+\l__fontspec_script_int=\count192
+\l__fontspec_language_int=\count193
+\l__fontspec_strnum_int=\count194
+\l__fontspec_tmp_int=\count195
+\l__fontspec_tmpa_int=\count196
+\l__fontspec_tmpb_int=\count197
+\l__fontspec_tmpc_int=\count198
+\l__fontspec_em_int=\count199
+\l__fontspec_emdef_int=\count266
+\l__fontspec_strong_int=\count267
+\l__fontspec_strongdef_int=\count268
+\l__fontspec_tmpa_dim=\dimen140
+\l__fontspec_tmpb_dim=\dimen141
+\l__fontspec_tmpc_dim=\dimen142
+ (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+) (/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/share/texlive/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+Package: polyglossia 2023/02/11 v1.60 Modern multilingual typesetting with XeLaTeX and LuaLaTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count269
+) (/usr/share/texlive/texmf-dist/tex/latex/makecmds/makecmds.sty
+Package: makecmds 2009/09/03 v1.0a extra command making commands
+) (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+ (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count270
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+) (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2023-02-02 LaTeX2e option processing using LaTeX3 keys
+) (/usr/share/texlive/texmf-dist/tex/luatex/luatexbase/luatexbase.sty
+Package: luatexbase 2015/10/04 v1.3 luatexbase interface to LuaTeX 
+ (/usr/share/texlive/texmf-dist/tex/luatex/ctablestack/ctablestack.sty
+Package: ctablestack 2015/10/01 v1.0 Catcode table stable support
+\@catcodetablestackcnt=\count271
+)
+\CatcodeTableOther=\catcodetable12
+\CatcodeTableExpl=\catcodetable13
+)
+Lua module: polyglossia 2013/05/11 1.3 Polyglossia (/usr/share/texlive/texmf-dist/tex/latex/polyglossia/gloss-latex.lde
+Package: gloss-latex 2023/02/11 vv1.60 polyglossia: module for default language
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}.
+)
+Package polyglossia Info: Default language is latex.
+Package polyglossia Info: Setting LuaTeX font renderer to Harfbuzz.
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count272
+\Gm@cntv=\count273
+\c@Gm@tempcnt=\count274
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
+\Gm@dimlist=\toks18
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 107.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/luatex.def
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 227.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks19
+\pgfutil@tempdima=\dimen153
+\pgfutil@tempdimb=\dimen154
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box52
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks22
+))
+\pgf@x=\dimen155
+\pgf@y=\dimen156
+\pgf@xa=\dimen157
+\pgf@ya=\dimen158
+\pgf@xb=\dimen159
+\pgf@yb=\dimen160
+\pgf@xc=\dimen161
+\pgf@yc=\dimen162
+\pgf@xd=\dimen163
+\pgf@yd=\dimen164
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count275
+\c@pgf@countb=\count276
+\c@pgf@countc=\count277
+\c@pgf@countd=\count278
+\t@pgf@toka=\toks23
+\t@pgf@tokb=\toks24
+\t@pgf@tokc=\toks25
+\pgf@sys@id@count=\count279
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-luatex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def
+File: pgfsys-luatex.def 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count280
+\pgfsyssoftpath@bigbuffer@items=\count281
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen165
+\pgfmath@count=\count282
+\pgfmath@box=\box53
+\pgfmath@toks=\toks26
+\pgfmath@stack@operand=\toks27
+\pgfmath@stack@operation=\toks28
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count283
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen166
+\pgf@picmaxx=\dimen167
+\pgf@picminy=\dimen168
+\pgf@picmaxy=\dimen169
+\pgf@pathminx=\dimen170
+\pgf@pathmaxx=\dimen171
+\pgf@pathminy=\dimen172
+\pgf@pathmaxy=\dimen173
+\pgf@xx=\dimen174
+\pgf@xy=\dimen175
+\pgf@yx=\dimen176
+\pgf@yy=\dimen177
+\pgf@zx=\dimen178
+\pgf@zy=\dimen179
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen180
+\pgf@path@lasty=\dimen181
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen182
+\pgf@shorten@start@additional=\dimen183
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box54
+\pgf@hbox=\box55
+\pgf@layerbox@main=\box56
+\pgf@picture@serial@count=\count284
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen184
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen185
+\pgf@pt@y=\dimen186
+\pgf@pt@temp=\dimen187
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen188
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen189
+\pgf@sys@shading@range@num=\count285
+\pgf@shadingcount=\count286
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box57
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box58
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen190
+\pgf@nodesepend=\dimen191
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen192
+\pgffor@skip=\dimen193
+\pgffor@stack=\toks29
+\pgffor@toks=\toks30
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count287
+\pgfplotmarksize=\dimen194
+)
+\tikz@lastx=\dimen195
+\tikz@lasty=\dimen196
+\tikz@lastxsaved=\dimen197
+\tikz@lastysaved=\dimen198
+\tikz@lastmovetox=\dimen199
+\tikz@lastmovetoy=\dimen256
+\tikzleveldistance=\dimen257
+\tikzsiblingdistance=\dimen258
+\tikz@figbox=\box59
+\tikz@figbox@bg=\box60
+\tikz@tempbox=\box61
+\tikz@tempbox@bg=\box62
+\tikztreelevel=\count288
+\tikznumberofchildren=\count289
+\tikznumberofcurrentchild=\count290
+\tikz@fig@count=\count291
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count292
+\pgfmatrixcurrentcolumn=\count293
+\pgf@matrix@numberofcolumns=\count294
+)
+\tikz@expandcount=\count295
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2022/04/08 v2.17n AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks31
+\ex@=\dimen259
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen260
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count296
+LaTeX Info: Redefining \frac on input line 236.
+\uproot@=\count297
+\leftroot@=\count298
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count299
+\DOTSCASE@=\count300
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box63
+\strutbox@=\box64
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen261
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count301
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count302
+\dotsspace@=\muskip16
+\c@parentequation=\count303
+\dspbrk@lvl=\count304
+\tag@help=\toks32
+\row@=\count305
+\column@=\count306
+\maxfields@=\count307
+\andhelp@=\toks33
+\eqnshift@=\dimen262
+\alignsep@=\dimen263
+\tagshift@=\dimen264
+\tagwidth@=\dimen265
+\totwidth@=\dimen266
+\lineht@=\dimen267
+\@envbody=\toks34
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks35
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks36
+\thm@bodyfont=\toks37
+\thm@headfont=\toks38
+\thm@notefont=\toks39
+\thm@headpunct=\toks40
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
+\dth@everypar=\toks41
+) (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2022/06/29 v1.29 mathematical typesetting tools
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count308
+\calc@Bcount=\count309
+\calc@Adimen=\dimen268
+\calc@Bdimen=\dimen269
+\calc@Askip=\skip56
+\calc@Bskip=\skip57
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count310
+\calc@Cskip=\skip58
+) (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
+)
+\g_MT_multlinerow_int=\count311
+\l_MT_multwidth_dim=\dimen270
+\origjot=\skip59
+\l_MT_shortvdotswithinadjustabove_dim=\dimen271
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen272
+\l_MT_above_intertext_sep=\dimen273
+\l_MT_below_intertext_sep=\dimen274
+\l_MT_above_shortintertext_sep=\dimen275
+\l_MT_below_shortintertext_sep=\dimen276
+\xmathstrut@box=\box65
+\xmathstrut@dim=\dimen277
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count312
+\float@exts=\toks42
+\float@box=\box66
+\@float@everytoks=\toks43
+\@floatcapt=\box67
+) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks44
+\c@algorithm=\count313
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+ (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count314
+\c@ALG@rem=\count315
+\c@ALG@nested=\count316
+\ALG@tlm=\skip60
+\ALG@thistlm=\skip61
+\c@ALG@Lnr=\count317
+\c@ALG@blocknr=\count318
+\c@ALG@storecount=\count319
+\c@ALG@tmpcounter=\count320
+\ALG@tmplength=\skip62
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen278
+\lightrulewidth=\dimen279
+\cmidrulewidth=\dimen280
+\belowrulesep=\dimen281
+\belowbottomsep=\dimen282
+\aboverulesep=\dimen283
+\abovetopsep=\dimen284
+\cmidrulesep=\dimen285
+\cmidrulekern=\dimen286
+\defaultaddspace=\dimen287
+\@cmidla=\count321
+\@cmidlb=\count322
+\@aboverulesep=\dimen288
+\@belowrulesep=\dimen289
+\@thisruleclass=\count323
+\@lastruleclass=\count324
+\@thisrulewidth=\dimen290
+) (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen291
+\ar@mcellbox=\box68
+\extrarowheight=\dimen292
+\NC@list=\toks45
+\extratabsurround=\skip63
+\backup@length=\skip64
+\ar@cellbox=\box69
+)
+\everycr=\toks46
+\minrowclearance=\skip65
+\rownum=\count325
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen293
+\TX@old@table=\dimen294
+\TX@old@col=\dimen295
+\TX@target=\dimen296
+\TX@delta=\dimen297
+\TX@cols=\count326
+\TX@ftn=\toks47
+) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip66
+\multirow@cntb=\count327
+\multirow@dima=\skip67
+\bigstrutjot=\dimen298
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip68
+\LTright=\skip69
+\LTpre=\skip70
+\LTpost=\skip71
+\LTchunksize=\count328
+\LTcapwidth=\dimen299
+\LT@head=\box70
+\LT@firsthead=\box71
+\LT@foot=\box72
+\LT@lastfoot=\box73
+\LT@gbox=\box74
+\LT@cols=\count329
+\LT@rows=\count330
+\c@LT@tables=\count331
+\c@LT@chunks=\count332
+\LT@p@ftn=\toks48
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count333
+\lst@gtempboxa=\box75
+\lst@token=\toks49
+\lst@length=\count334
+\lst@currlwidth=\dimen300
+\lst@column=\count335
+\lst@pos=\count336
+\lst@lostspace=\dimen301
+\lst@width=\dimen302
+\lst@newlines=\count337
+\lst@lineno=\count338
+\lst@maxwidth=\dimen303
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count339
+\lst@skipnumbers=\count340
+\lst@framebox=\box76
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2023-02-07 v7.00v Hypertext links for LaTeX
+ (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks50
+) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
+ (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count341
+)
+\@linkdim=\dimen304
+\Hy@linkcounter=\count342
+\Hy@pagecounter=\count343
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count344
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4177.
+Package hyperref Info: Link nesting OFF on input line 4182.
+Package hyperref Info: Hyper index ON on input line 4185.
+Package hyperref Info: Plain pages OFF on input line 4192.
+Package hyperref Info: Backreferencing OFF on input line 4197.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4425.
+\c@Hy@tempcnt=\count345
+ (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4763.
+\XeTeXLinkMargin=\dimen305
+ (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count346
+\Field@Width=\dimen306
+\Fld@charsize=\dimen307
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count347
+\c@Item=\count348
+\c@Hfootnote=\count349
+)
+Package hyperref Info: Driver (autodetected): hluatex.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hluatex.def
+File: hluatex.def 2023-02-07 v7.00v Hyperref driver for luaTeX
+ (/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count350
+\c@bookmark@seq@number=\count351
+ (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip72
+) (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+\f@nch@headwidth=\skip73
+\f@nch@O@elh=\skip74
+\f@nch@O@erh=\skip75
+\f@nch@O@olh=\skip76
+\f@nch@O@orh=\skip77
+\f@nch@O@elf=\skip78
+\f@nch@O@erf=\skip79
+\f@nch@O@olf=\skip80
+\f@nch@O@orf=\skip81
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box77
+\beforetitleunit=\skip82
+\aftertitleunit=\skip83
+\ttl@plus=\dimen308
+\ttl@minus=\dimen309
+\ttl@toksa=\toks51
+\titlewidth=\dimen310
+\titlewidthlast=\dimen311
+\titlewidthfirst=\dimen312
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2023/03/17 version 6.0.3 text color boxes
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks52
+\verbatim@line=\toks53
+\verbatim@in@stream=\read3
+) (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\tcb@titlebox=\box78
+\tcb@upperbox=\box79
+\tcb@lowerbox=\box80
+\tcb@phantombox=\box81
+\c@tcbbreakpart=\count352
+\c@tcblayer=\count353
+\c@tcolorbox@number=\count354
+\tcb@temp=\box82
+\tcb@temp=\box83
+\tcb@temp=\box84
+\tcb@temp=\box85
+) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.0.3'
+(/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
+Package: tikzfill.image 2022/07/20 v1.0.0 Image filling library for TikZ
+ (/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzfill-common.sty
+Package: tikzfill-common 2022/07/20 v1.0.0 Auxiliary code for tikzfill
+) (/usr/share/texlive/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
+File: tikzlibraryfill.image.code.tex 2022/07/20 v1.0.0 Image filling library
+\l__tikzfill_img_box=\box86
+)) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.0.3'
+)) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.0.3'
+(/usr/share/texlive/texmf-dist/tex/latex/pdfcol/pdfcol.sty
+Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
+)
+Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
+\tcb@testbox=\box87
+\tcb@totalupperbox=\box88
+\tcb@totallowerbox=\box89
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)) (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\enitkv@toks@=\toks54
+\labelindent=\skip84
+\enit@outerparindent=\dimen313
+\enit@toks=\toks55
+\enit@inbox=\box90
+\enit@count@id=\count355
+\enitdp@description=\count356
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
+\MT@toks=\toks56
+\MT@tempbox=\box91
+\MT@count=\count357
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
+LaTeX Info: Redefining \leftprotrusion on input line 1060.
+\MT@prot@toks=\toks57
+LaTeX Info: Redefining \rightprotrusion on input line 1078.
+LaTeX Info: Redefining \textls on input line 1368.
+\MT@outer@kern=\dimen314
+LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
+\MT@listname@count=\count358
+ (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-luatex.def
+File: microtype-luatex.def 2023/03/13 v3.1a Definitions specific to luatex (RS)
+Lua module: microtype 2023/03/13 3.1a microtype module.
+Module microtype Info: overwriting function `keepligature' on input line 63
+LaTeX Info: Redefining \lsstyle on input line 688.
+LaTeX Info: Redefining \lslig on input line 688.
+\MT@outer@space=\skip85
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+ (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
+)) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/03/12 v3.6j Customizing captions (AR)
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
+\caption@tempdima=\dimen315
+\captionmargin=\dimen316
+\caption@leftmargin=\dimen317
+\caption@rightmargin=\dimen318
+\caption@width=\dimen319
+\caption@indent=\dimen320
+\caption@parindent=\dimen321
+\caption@hangindent=\dimen322
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count359
+\c@continuedfloat=\count360
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/02/19 v1.6 Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 239.
+\c@subfigure=\count361
+Package caption Info: New subtype `subtable' on input line 239.
+\c@subtable=\count362
+) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+)) (./preamble/fonts.tex (/usr/share/texlive/texmf-dist/tex/latex/polyglossia/gloss-greek.ldf
+File: gloss-greek.ldf polyglossia: module for Greek
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+Module polyglossia Info: Language data for greek
+(polyglossia)            hyphenation	
+(polyglossia)            patterns	hyph-el-polyton.pat.txt
+(polyglossia)            righthyphenmin	1
+(polyglossia)            loader	loadhyph-el-polyton.tex
+(polyglossia)            synonyms	polygreek
+(polyglossia)            lefthyphenmin	1 on input line 16
+
+Module polyglossia Warning: Hyphenation file hyph-el-polyton.pat.txt not found on input line 16
+Module polyglossia Info: Language greek was not yet loaded; created with id 2 on input line 16
+(/usr/share/texlive/texmf-dist/tex/latex/polyglossia/xgreek-fixes.def)
+Module polyglossia Info: Language data for monogreek
+(polyglossia)            hyphenation	
+(polyglossia)            patterns	hyph-el-monoton.pat.txt
+(polyglossia)            righthyphenmin	1
+(polyglossia)            loader	loadhyph-el-monoton.tex
+(polyglossia)            synonyms	
+(polyglossia)            lefthyphenmin	1 on input line 99
+
+Module polyglossia Warning: Hyphenation file hyph-el-monoton.pat.txt not found on input line 99
+Module polyglossia Info: Language monogreek was not yet loaded; created with id 3 on input line 99
+Package polyglossia Info: Option: Monotonic Greek.
+\@attic@num=\count363
+)
+Package polyglossia Info: Default language is greek.
+ (/usr/share/texlive/texmf-dist/tex/latex/polyglossia/gloss-english.ldf
+File: gloss-english.ldf polyglossia: module for English
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {english/script}  =>  {latin}
+>  {english/lcscript}  =>  {latin}
+>  {english/scripttag}  =>  {}
+>  {english/language}  =>  {English}
+>  {english/langtag}  =>  {ENG}
+>  {english/bcp47}  =>  {en-US}
+>  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
+>  {english/direction}  =>  {LR}
+>  {english/hyphenmins}  =>  {2,3}
+>  {english/frenchspacing}  =>  {false}
+>  {english/indentfirst}  =>  {false}
+>  {english/fontsetup}  =>  {true}
+>  {english/envname}  =>  {english}
+>  {english/babelname}  =>  {english}
+>  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+Package polyglossia Info: Option: English, variant=american.
+)
+luaotfload | cache : Lookup cache loaded from /home/nick/.texlive2023/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
+
+Package fontspec Info: Font family 'NotoSans(0)' created for font 'Noto Sans'
+(fontspec)             with options
+(fontspec)             [Renderer=Harfbuzz,Script=Greek,Ligatures=TeX,Numbers=Lining,UprightFont=*,BoldFont=*
+(fontspec)             Bold,ItalicFont=* Italic,BoldItalicFont=* Bold Italic].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"NotoSans:mode=harf;script=grek;language=dflt;+tlig;+lnum;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"NotoSans:mode=harf;script=grek;language=dflt;+tlig;+lnum;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"NotoSansBold:mode=harf;script=grek;language=dflt;+tlig;+lnum;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"NotoSansBold:mode=harf;script=grek;language=dflt;+tlig;+lnum;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"NotoSansItalic:mode=harf;script=grek;language=dflt;+tlig;+lnum;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"NotoSansItalic:mode=harf;script=grek;language=dflt;+tlig;+lnum;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"NotoSansBoldItalic:mode=harf;script=grek;language=dflt;+tlig;+lnum;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"NotoSansBoldItalic:mode=harf;script=grek;language=dflt;+tlig;+lnum;+smcp;"
+
+
+Package fontspec Info: Font family 'NotoSans(1)' created for font 'Noto Sans'
+(fontspec)             with options [Renderer=Harfbuzz].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"NotoSans:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"NotoSans:mode=harf;script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"NotoSans/B:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"NotoSans/B:mode=harf;script=latn;language=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"NotoSans/I:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"NotoSans/I:mode=harf;script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"NotoSans/BI:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"NotoSans/BI:mode=harf;script=latn;language=dflt;+smcp;"
+
+
+Package fontspec Info: Font family 'DejaVuSansMono(0)' created for font
+(fontspec)             'DejaVu Sans Mono' with options
+(fontspec)             [Renderer=Harfbuzz,Script=Greek,Scale=0.85].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono:mode=harf;script=grek;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/B:mode=harf;script=grek;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/I:mode=harf;script=grek;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/BI:mode=harf;script=grek;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+
+Package fontspec Info: Font family 'DejaVuSansMono(1)' created for font
+(fontspec)             'DejaVu Sans Mono' with options
+(fontspec)             [Renderer=Harfbuzz,Script=Latin,Scale=0.85].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/B:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/I:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/BI:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+)
+
+Package fontspec Info: Font family 'DejaVuSansMono(2)' created for font
+(fontspec)             'DejaVu Sans Mono' with options
+(fontspec)             [Renderer=Harfbuzz,WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordSpace,Scale=0.85].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/B:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/I:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.85]"DejaVuSansMono/BI:mode=harf;script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+ (./preamble/colors.tex) (./preamble/listings.tex (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)) (./preamble/formatting.tex
+Package hyperref Info: Option `colorlinks' set `true' on input line 29.
+\c@example=\count364
+\c@note=\count365
+) (./preamble/commands.tex) (./main.aux (./chapters/title_page.aux) (./chapters/abstract.aux) (./chapters/introduction.aux) (./chapters/components.aux) (./chapters/algorithm.aux) (./chapters/experiments.aux) (./chapters/results.aux) (./chapters/conclusions.aux) (./chapters/references.aux))
+\openout1 = main.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 17.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 17.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 17.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 17.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 17.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 17.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 17.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 17.
+LaTeX Font Info:    Redeclaring math accent \check on input line 17.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 17.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 17.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 17.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 17.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 17.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 17.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 17.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 17.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 17.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/DejaVuSansMono(2)/m/n on input line 17.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 17.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/DejaVuSansMono(2)/b/n on input line 17.
+The property list \__xpg_alias contains the pairs (without outer braces):
+>  {latex/target}  =>  {latex}
+>  {greek/target}  =>  {greek}
+>  {grc/target}  =>  {greek}
+>  {grc/variant}  =>  {ancient}
+>  {grc/options}  =>  {variant=ancient}
+>  {el-polyton/target}  =>  {greek}
+>  {el-polyton/options}  =>  {varant=polytonic}
+>  {el-monoton/target}  =>  {greek}
+>  {el-monoton/variant}  =>  {monotonic}
+>  {el-monoton/options}  =>  {variant=monotonic}
+>  {el/target}  =>  {greek}
+>  {polutonikogreek/target}  =>  {greek}
+>  {polutonikogreek/variant}  =>  {polytonic}
+>  {polutonikogreek/options}  =>  {variant=polytonic}
+>  {english/target}  =>  {english}
+>  {en/target}  =>  {english}
+>  {en-AU/target}  =>  {english}
+>  {en-AU/variant}  =>  {australian}
+>  {en-AU/options}  =>  {variant=australian}
+>  {en-CA/target}  =>  {english}
+>  {en-CA/variant}  =>  {canadian}
+>  {en-CA/options}  =>  {variant=canadian}
+>  {en-GB/target}  =>  {english}
+>  {en-GB/variant}  =>  {british}
+>  {en-GB/options}  =>  {variant=british}
+>  {en-NZ/target}  =>  {english}
+>  {en-NZ/variant}  =>  {newzealand}
+>  {en-NZ/options}  =>  {variant=newzealand}
+>  {en-US/target}  =>  {english}
+>  {en-US/variant}  =>  {us}
+>  {en-US/options}  =>  {variant=us}
+>  {american/target}  =>  {english}
+>  {american/variant}  =>  {us}
+>  {american/options}  =>  {variant=us}
+>  {australian/target}  =>  {english}
+>  {australian/variant}  =>  {australian}
+>  {australian/options}  =>  {variant=australian}
+>  {british/target}  =>  {english}
+>  {british/variant}  =>  {british}
+>  {british/options}  =>  {variant=british}
+>  {canadian/target}  =>  {english}
+>  {canadian/variant}  =>  {canadian}
+>  {canadian/options}  =>  {variant=canadian}
+>  {newzealand/target}  =>  {english}
+>  {newzealand/variant}  =>  {newzealand}
+>  {newzealand/options}  =>  {variant=newzealand}.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+*geometry* verbose mode - [ preamble ] result:
+* driver: luatex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead includefoot 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=632.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-1.1381pt
+* \headheight=15.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count366
+\scratchdimen=\dimen323
+\scratchbox=\box92
+\nofMPsegments=\count367
+\nofMParguments=\count368
+\everyMPshowfont=\toks58
+\MPscratchCnt=\count369
+\MPscratchDim=\dimen324
+\MPnumerator=\count370
+\makeMPintoPDFobject=\count371
+\everyMPtoPDFconversion=\toks59
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+\c@lstlisting=\count372
+Package hyperref Info: Link coloring ON on input line 17.
+ (./main.out) (./main.out)
+\@outlinefile=\write4
+
+\openout4 = main.out
+LaTeX Info: Redefining \microtypecontext on input line 17.
+Package microtype Info: Applying patch `item' on input line 17.
+Package microtype Info: Applying patch `toc' on input line 17.
+Package microtype Info: Applying patch `eqnum' on input line 17.
+
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 17.
+
+Package microtype Info: Applying patch `verbatim' on input line 17.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 17.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg
+File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Modern Roman (RS)
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `NotoSans' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+\openout2 = chapters/title_page.aux
+ (./chapters/title_page.tex
+<emblem.jpg, id=119, 400.49625pt x 401.5pt>
+File: emblem.jpg Graphic file (type jpg)
+<use emblem.jpg>
+Package luatex.def Info: emblem.jpg  used on input line 4.
+(luatex.def)             Requested size: 142.26378pt x 142.62231pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+) [1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}<./emblem.jpg>]) (./main.toc)
+\tf@toc=\write5
+
+\openout5 = main.toc
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
+[1
+
+
+]
+\openout2 = chapters/abstract.aux
+ (./chapters/abstract.tex)
+Overfull \hbox (1.39986pt too wide) in paragraph at lines 2--25
+[]\TU/NotoSans(0)/m/n/12 Στόχος αυτής της εργασίας ήταν η κατανόηση και υλοποίηση του Google Dream
+ []
+
+
+Overfull \hbox (11.80411pt too wide) in paragraph at lines 2--25
+\TU/NotoSans(0)/m/n/12 V1. Τί είναι το google dreamer; Το google dreamer είναι ένας αλγόριθμος ενισχυτικής
+ []
+
+
+Overfull \hbox (11.75873pt too wide) in paragraph at lines 2--25
+\TU/NotoSans(0)/m/n/12 έναν Variational Auto Encoder (VAE) τον οποίο έχουμε σπάσει σε Encoder και Decoder
+ []
+
+
+Overfull \hbox (30.05586pt too wide) in paragraph at lines 2--25
+\TU/NotoSans(0)/m/n/12 έλεγχο σε ένα σύστημα όπως τετράποδο ρομπότ ανάποδο εκκρεμές και άλλα συστήματα.
+ []
+
+
+Overfull \hbox (6.45097pt too wide) in paragraph at lines 2--25
+\TU/NotoSans(0)/m/n/12 δυνατό περισσότερο. Εκπαιδεύουμε για όσο το δυνατόν περισσότερα βήματα, χωρίς
+ []
+
+[2
+
+]
+\openout2 = chapters/introduction.aux
+ (./chapters/introduction.tex
+Overfull \hbox (66.06082pt too wide) in paragraph at lines 3--7
+\TU/NotoSans(0)/m/n/12 ενέργειες έχοντας ως στόχο τη μεγιστοποίηση της συνολικής επιβράβευσης, χρησιμοποιώντας
+ []
+
+
+Overfull \hbox (47.53006pt too wide) in paragraph at lines 3--7
+\TU/NotoSans(0)/m/n/12 εμπειρία που συλλέγεται κατά τη διάρκεια της εκπαίδευσης. Παρά την αποτελεσματικότητά
+ []
+
+
+Overfull \hbox (21.67688pt too wide) in paragraph at lines 3--7
+\TU/NotoSans(0)/m/n/12 της σε απλά περιβάλλοντα, η ενισχυτική μάθηση συχνά δυσκολεύεται σε περιβάλλοντα
+ []
+
+
+Overfull \hbox (6.2732pt too wide) in paragraph at lines 8--17
+\TU/NotoSans(0)/m/n/12 (a): Η ενέργεια που εκτελεί ο πράκτορας, π.χ. επιτάχυνση ή στροφή του αυτοκινήτου.
+ []
+
+
+Overfull \hbox (0.48997pt too wide) in paragraph at lines 19--27
+\TU/NotoSans(0)/m/n/12 αντιμετωπίσει αυτές τις προκλήσεις. Το Dreamer παίρνει έμπνευση από τα μοντέλα
+ []
+
+
+Overfull \hbox (22.65982pt too wide) in paragraph at lines 19--27
+\TU/NotoSans(0)/m/n/12 agent να ονειρεύεται μελλοντικές καταστάσεις και να εκπαιδεύεται σε έναν λανθάνοντα
+ []
+
+
+Overfull \hbox (16.77975pt too wide) in paragraph at lines 19--27
+\TU/NotoSans(0)/m/n/12 με υψηλές διαστάσεις όπως τα παιχνίδια με εικόνες από τις οποίες πρέπει να εξάγουμε
+ []
+
+
+Overfull \hbox (7.52779pt too wide) in paragraph at lines 19--27
+\TU/NotoSans(0)/m/n/12 και αναλύουμε το google dreamer V1 στο περιβάλλον CarRacing-V3 του gymnasium.
+ []
+
+[3
+
+
+
+]
+Overfull \hbox (26.34277pt too wide) in paragraph at lines 32--35
+[]\TU/NotoSans(0)/m/n/12 Σε αντίθεση με αλγορίθμους Model-Free (όπως PPO, DQN) που μαθαίνουν απευθείας
+ []
+
+
+Overfull \hbox (44.56801pt too wide) in paragraph at lines 35--37
+[]\TU/NotoSans(0)/b/n/12 Sample Efficiency: \TU/NotoSans(0)/m/n/12 Χρειάζεται λιγότερα βήματα στο περιβάλλον, καθώς εκπαιδεύεται
+ []
+
+
+Overfull \hbox (7.70691pt too wide) in paragraph at lines 37--39
+[]\TU/NotoSans(0)/b/n/12 Long-horizon Prediction: \TU/NotoSans(0)/m/n/12 Μέσω του RSSM, μπορεί να προβλέψει τις συνέπειες
+ []
+
+
+Overfull \hbox (26.99574pt too wide) in paragraph at lines 37--39
+\TU/NotoSans(0)/m/n/12 ενεργειών πολύ πιο μακριά στο μέλλον από ό,τι ένας απλός Q-learning αλγόριθμος. 
+ []
+
+) [4]
+\openout2 = chapters/components.aux
+ (./chapters/components.tex
+<figures/VAE_Basic.png, id=179, 1126.2075pt x 485.815pt>
+File: figures/VAE_Basic.png Graphic file (type png)
+<use figures/VAE_Basic.png>
+Package luatex.def Info: figures/VAE_Basic.png  used on input line 10.
+(luatex.def)             Requested size: 364.19667pt x 157.10223pt.
+
+Overfull \hbox (15.66577pt too wide) in paragraph at lines 5--12
+[]\TU/NotoSans(0)/m/n/12 Ο VAE αποτελεί ένα βασικό εργαλείο για την κωδικοποίηση εικόνων σε λανθάνοντα
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mid' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 16.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 16.
+
+
+Overfull \hbox (7.67403pt too wide) in paragraph at lines 19--23
+\TU/NotoSans(0)/m/n/12 περιττή πληροφορία και βαραίνει την εκπαίδευση. Αντίθετα αυτό που χρειαζόμαστε
+ []
+
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 10.20007pt on input line 30.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `DejaVuSansMono' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 9.30756pt on input line 30.
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/n' will be
+(Font)              scaled to size 5.10004pt on input line 31.
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/b/n' will be
+(Font)              scaled to size 9.30756pt on input line 31.
+LaTeX Font Info:    Font shape `TU/DejaVuSansMono(0)/m/it' will be
+(Font)              scaled to size 9.30756pt on input line 32.
+[5
+
+
+
+<./figures/VAE_Basic.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mid' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 60.
+
+[6]
+<figures/VAE_analytic.png, id=237, 325.96782pt x 527.72156pt>
+File: figures/VAE_analytic.png Graphic file (type png)
+<use figures/VAE_analytic.png>
+Package luatex.def Info: figures/VAE_analytic.png  used on input line 105.
+(luatex.def)             Requested size: 364.19667pt x 589.65912pt.
+ [7]
+Overfull \hbox (15.26675pt too wide) in paragraph at lines 111--113
+[]\TU/NotoSans(0)/m/n/12 Η επιλογή μετατροπής των εικόνων σε ασπρόμαυρες (grayscale) αντί για έγχρωμες
+ []
+
+[8<./figures/VAE_analytic.png>]
+Overfull \hbox (3.13094pt too wide) in paragraph at lines 115--118
+[]\TU/NotoSans(0)/b/n/12 Μείωση υπολογιστικού κόστους: \TU/NotoSans(0)/m/n/12 Μία ασπρόμαυρη εικόνα 64×64 έχει 4,096
+ []
+
+
+Overfull \hbox (6.21506pt too wide) in paragraph at lines 115--118
+\TU/NotoSans(0)/m/n/12 τιμές, ενώ μία έγχρωμη έχει 12,288 (3× περισσότερες). Αυτό μειώνει σημαντικά
+ []
+
+
+Overfull \hbox (4.47195pt too wide) in paragraph at lines 119--123
+[]\TU/NotoSans(0)/b/n/12 Επαρκής πληροφορία: \TU/NotoSans(0)/m/n/12 Στο περιβάλλον CarRacing-V3, η κρίσιμη πληροφορία
+ []
+
+
+Overfull \hbox (48.09795pt too wide) in paragraph at lines 119--123
+\TU/NotoSans(0)/m/n/12 (θέση δρόμου, όρια πίστας, θέση αυτοκινήτου) διατηρείται πλήρως στην ασπρόμαυρη
+ []
+
+
+Overfull \hbox (14.278pt too wide) in paragraph at lines 119--123
+\TU/NotoSans(0)/m/n/12 αναπαράσταση. Το χρώμα δεν προσφέρει επιπλέον σημασιολογική πληροφορία
+ []
+
+
+Overfull \hbox (0.9939pt too wide) in paragraph at lines 124--127
+[]\TU/NotoSans(0)/b/n/12 Μικρότερο μοντέλο: \TU/NotoSans(0)/m/n/12 Ο encoder χρειάζεται λιγότερες παραμέτρους (1 κανάλι
+ []
+
+
+Overfull \hbox (16.06487pt too wide) in paragraph at lines 128--131
+\TU/NotoSans(0)/m/n/12 βασίζεται στην εργασία των Ha & Schmidhuber [[]], η οποία επίσης χρησιμοποιεί
+ []
+
+
+Overfull \hbox (23.21103pt too wide) in paragraph at lines 143--147
+\OML/cmm/m/it/12 s[]; a[]\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 . Πηγαίνει στην λανθάνουσα κατάσταση $\OML/cmm/m/it/12 h[] \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 h[]; []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]; a[]\OT1/cmr/m/n/12 ))$
+ []
+
+
+Overfull \hbox (2.8479pt too wide) in paragraph at lines 143--147
+\TU/NotoSans(0)/m/n/12 της επόμενης κατάστασης με βάση την παρούσα δηλαδή την prior πιθανότητα
+ []
+
+
+Overfull \hbox (7.22975pt too wide) in paragraph at lines 153--154
+\TU/NotoSans(0)/m/n/12 επιβράβευση της κατάστασης δηλαδή υλοποιεί την $\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 r[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 s[]\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 . Αυτό πραγματοποιείται
+ []
+
+[9]
+Overfull \hbox (6.15184pt too wide) in paragraph at lines 173--174
+\TU/NotoSans(0)/m/n/12 βάση την αναμενόμενη τιμή του κέρδους αποφασίζει ποια είναι η καλύτερη επόμενη
+ []
+
+
+Overfull \hbox (28.75398pt too wide) in paragraph at lines 173--174
+\TU/NotoSans(0)/m/n/12 κίνηση. Ωστόσο προσθέτουμε και μία τυχαιότητα στις κινήσεις με στόχο την εξερεύνηση
+ []
+
+[10]
+Overfull \hbox (64.47905pt too wide) in paragraph at lines 193--196
+\TU/NotoSans(0)/m/n/12 δυνατότητα υπολογισμού παραγώγων μέσω στοχαστικών κόμβων. Κανονικά, η δειγματοληψία
+ []
+
+
+Overfull \hbox (59.01305pt too wide) in paragraph at lines 193--196
+\OML/cmm/m/it/12 z \OMS/cmsy/m/n/12  N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 δεν είναι παραγωγίσιμη πράξη. Ο Dreamer χρησιμοποιεί το \TU/NotoSans(0)/b/n/12 Reparameterization
+ []
+
+
+Overfull \hbox (19.01518pt too wide) in paragraph at lines 198--201
+\TU/NotoSans(0)/m/n/12 Αυτό επιτρέπει στα gradients να περάσουν ανεμπόδιστα προς τα $\OML/cmm/m/it/12 $ \TU/NotoSans(0)/m/n/12 και $\OML/cmm/m/it/12 $\TU/NotoSans(0)/m/n/12 , επιτρέποντας
+ []
+
+
+Overfull \hbox (4.41287pt too wide) in paragraph at lines 218--223
+[]\TU/NotoSans(0)/m/n/12 Για να εξισορροπηθεί η μεροληψία (bias) και η διακύμανση (variance), ο Dreamer
+ []
+
+[11]) [12]
+\openout2 = chapters/algorithm.aux
+ (./chapters/algorithm.tex
+<figures/dreamer_algorithm.png, id=335, 773.89125pt x 529.22719pt>
+File: figures/dreamer_algorithm.png Graphic file (type png)
+<use figures/dreamer_algorithm.png>
+Package luatex.def Info: figures/dreamer_algorithm.png  used on input line 7.
+(luatex.def)             Requested size: 409.71692pt x 280.19028pt.
+
+Overfull \hbox (19.29288pt too wide) in paragraph at lines 13--14
+[]\TU/NotoSans(0)/m/n/12 Ποιο αναλυτικά και διαισθητικά, η παραπάνω διαδικασία περιγράφεται παρακάτω: 
+ []
+
+
+Overfull \hbox (0.58603pt too wide) in paragraph at lines 29--30
+[]\TU/NotoSans(0)/b/n/12 Προεπεξεργασία: \TU/NotoSans(0)/m/n/12 Μετατροπή του frame $\OML/cmm/m/it/12 o[]$ \TU/NotoSans(0)/m/n/12 σε ασπρόμαυρο, κανονικοποίηση
+ []
+
+[13
+
+
+
+<./figures/dreamer_algorithm.png>]
+Overfull \hbox (10.39992pt too wide) in paragraph at lines 47--48
+[]\TU/NotoSans(0)/m/n/12 Πραγματοποιούμε decode του παρόντος state $\OML/cmm/m/it/12 s[]$ \TU/NotoSans(0)/m/n/12 και βρίσκουμε το σφάλμα
+ []
+
+
+Overfull \hbox (15.6247pt too wide) in paragraph at lines 49--50
+[]\TU/NotoSans(0)/m/n/12 Υπολογίζουμε $\OML/cmm/m/it/12 KL\OT1/cmr/m/n/12 ([] \OMS/cmsy/m/n/12 k []\OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 όπου KL = Kullback–Leibler divergence. 
+ []
+
+
+Overfull \hbox (52.44774pt too wide) in paragraph at lines 53--54
+[]\TU/NotoSans(0)/m/n/12 Πραγματοποιούμε back propagation και στη συνέχεια ενημερώνουμε τις παραμέτρους
+ []
+
+
+Overfull \hbox (23.22801pt too wide) in paragraph at lines 53--54
+\TU/NotoSans(0)/m/n/12 του μοντέλου $\OML/cmm/m/it/12 $ \TU/NotoSans(0)/m/n/12 (world_params) χρησιμοποιώντας Adam optimizer. Έτσι τελειώνει
+ []
+
+[14]
+Overfull \hbox (70.94023pt too wide) in paragraph at lines 56--56
+|[]\TU/NotoSans(0)/b/n/14.4 Φάση 3: Χώρος Λανθάνουσας Φαντασίας - Εκπαίδευση Συμπεριφοράς| 
+ []
+
+
+Overfull \hbox (12.05408pt too wide) in paragraph at lines 57--58
+\TU/NotoSans(0)/m/n/12 «ονειρευτεί» την επόμενη κατάσταση όπως στο 11β. Επαναλαμβάνουμε τα παρακάτω
+ []
+
+
+Overfull \hbox (5.90778pt too wide) in paragraph at lines 67--68
+[]\TU/NotoSans(0)/m/n/12 Πραγματοποιούμε Adam optimization στον actor ενημερώνοντας την πολιτική
+ []
+
+
+Overfull \hbox (16.82738pt too wide) in paragraph at lines 68--69
+[]\TU/NotoSans(0)/m/n/12 Κάνουμε detach στα imagined states, δηλαδή για $\OML/cmm/m/it/12 T \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 H$ \TU/NotoSans(0)/m/n/12 καταστάσεις παγώνοντας
+ []
+
+
+Overfull \hbox (13.31177pt too wide) in paragraph at lines 71--72
+[]\TU/NotoSans(0)/m/n/12 Ενημερώνουμε τον τρόπο εκτίμησης επιβράβευσης του Critic χρησιμοποιώντας
+ []
+
+
+Overfull \hbox (3.12775pt too wide) in paragraph at lines 80--82
+[]\TU/NotoSans(0)/m/n/12 Εξασφαλίζει ότι η posterior κατανομή $\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OMS/cmsy/m/n/12 j\OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 παραμένει κοντά στην prior $\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OMS/cmsy/m/n/12 j\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 ,
+ []
+
+[15]
+Overfull \hbox (28.59349pt too wide) in paragraph at lines 85--87
+\TU/NotoSans(0)/m/n/12 διαφοράς μεταξύ δύο κατανομών πιθανότητας $\OML/cmm/m/it/12 P$ \TU/NotoSans(0)/m/n/12 και $\OML/cmm/m/it/12 Q$\TU/NotoSans(0)/m/n/12 . Για συνεχείς τυχαίες μεταβλητές,
+ []
+
+
+Overfull \hbox (54.89687pt too wide) in paragraph at lines 92--93
+[]\TU/NotoSans(0)/m/n/12 Ουσιαστικά, εκφράζει την ”πληροφοριακή απόσταση” που χάνεται αν χρησιμοποιήσουμε
+ []
+
+
+Overfull \hbox (30.88312pt too wide) in paragraph at lines 95--97
+\TU/NotoSans(0)/m/n/12 κατανομές posterior $\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 και prior $\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 είναι πολυμεταβλητές Γκαουσιανές (Multivariate
+ []
+
+) [16]
+\openout2 = chapters/experiments.aux
+
+No file chapters/experiments.tex.
+
+\openout2 = chapters/results.aux
+(./chapters/results.tex [17
+
+
+
+
+
+
+]
+Overfull \hbox (26.30487pt too wide) in paragraph at lines 108--110
+\TU/NotoSans(0)/m/n/12 να πλοηγείται στην πίστα, παραμένοντας εντός δρόμου και διατηρώντας ικανοποιητική
+ []
+
+<figures/run1.png, id=398, 745.28438pt x 595.47469pt>
+File: figures/run1.png Graphic file (type png)
+<use figures/run1.png>
+Package luatex.def Info: figures/run1.png  used on input line 119.
+(luatex.def)             Requested size: 182.09486pt x 145.48824pt.
+<figures/run2.png, id=399, 307.90031pt x 362.10281pt>
+File: figures/run2.png Graphic file (type png)
+<use figures/run2.png>
+Package luatex.def Info: figures/run2.png  used on input line 125.
+(luatex.def)             Requested size: 136.57462pt x 160.61862pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (23.44307pt too wide) in paragraph at lines 130--133
+\TU/NotoSans(0)/m/n/12 πορεία, δεν καταλαβαίνει καν τι χρειάζεται να κάνει. Αυτό είναι λογικό και αναμενόμενο
+ []
+
+
+Overfull \hbox (0.40376pt too wide) in paragraph at lines 130--133
+\TU/NotoSans(0)/m/n/12 αφού η μέθοδος του Dreamer απαιτεί πολλές ώρες εκπαίδευσης και μεγάλο αριθμό
+ []
+
+[18]
+<figures/Dreams1.png, id=406, 1196.21906pt x 620.3175pt>
+File: figures/Dreams1.png Graphic file (type png)
+<use figures/Dreams1.png>
+Package luatex.def Info: figures/Dreams1.png  used on input line 140.
+(luatex.def)             Requested size: 364.19667pt x 188.86055pt.
+<figures/Dreams2.png, id=407, 1161.58969pt x 548.0475pt>
+File: figures/Dreams2.png Graphic file (type png)
+<use figures/Dreams2.png>
+Package luatex.def Info: figures/Dreams2.png  used on input line 149.
+(luatex.def)             Requested size: 364.19667pt x 171.83307pt.
+
+Overfull \hbox (10.0478pt too wide) in paragraph at lines 134--155
+[]\TU/NotoSans(0)/m/n/12 Παρακάτω βλέπουμε πώς απεικονίζονται τα όνειρα κατά την διάρκεια του testing. 
+ []
+
+[19<./figures/run1.png><./figures/run2.png>]
+<figures/Dreamsonly1.png, id=415, 1183.42125pt x 228.855pt>
+File: figures/Dreamsonly1.png Graphic file (type png)
+<use figures/Dreamsonly1.png>
+Package luatex.def Info: figures/Dreamsonly1.png  used on input line 165.
+(luatex.def)             Requested size: 364.19667pt x 70.42749pt.
+<figures/Dreamsonly2.png, id=416, 1167.61218pt x 250.68657pt>
+File: figures/Dreamsonly2.png Graphic file (type png)
+<use figures/Dreamsonly2.png>
+Package luatex.def Info: figures/Dreamsonly2.png  used on input line 174.
+(luatex.def)             Requested size: 364.19667pt x 78.194pt.
+ [20<./figures/Dreams1.png><./figures/Dreams2.png>]
+<figures/Dreams5.png, id=425, 1168.365pt x 590.205pt>
+File: figures/Dreams5.png Graphic file (type png)
+<use figures/Dreams5.png>
+Package luatex.def Info: figures/Dreams5.png  used on input line 187.
+(luatex.def)             Requested size: 455.24411pt x 229.97188pt.
+
+Overfull \hbox (46.75504pt too wide) in paragraph at lines 182--189
+\TU/NotoSans(0)/m/n/12 καλύτερα αλλά κάποιες φορές πάει να βγει εκτός πορείας. Τέλος, παρακάτω παρουσιάζουμε
+ []
+
+<figures/Dreamsfull1.png, id=426, 1187.93813pt x 565.36218pt>
+File: figures/Dreamsfull1.png Graphic file (type png)
+<use figures/Dreamsfull1.png>
+Package luatex.def Info: figures/Dreamsfull1.png  used on input line 194.
+(luatex.def)             Requested size: 455.24411pt x 216.6601pt.
+[21<./figures/Dreamsonly1.png><./figures/Dreamsonly2.png><./figures/Dreams5.png>]
+Overfull \hbox (6.81184pt too wide) in paragraph at lines 197--200
+[]\TU/NotoSans(0)/m/n/12 Παρατηρούμε ότι τα όνειρα διατηρούν βασικά χαρακτηριστικά της πραγματικής
+ []
+
+
+Overfull \hbox (29.2419pt too wide) in paragraph at lines 197--200
+\TU/NotoSans(0)/m/n/12 εικόνας, όπως η θέση του δρόμου και του αυτοκινήτου, αλλά ταυτόχρονα παρουσιάζουν
+ []
+
+
+Overfull \hbox (3.6689pt too wide) in paragraph at lines 197--200
+\TU/NotoSans(0)/m/n/12 κατάσταση βασισμένο στην τρέχουσα, χωρίς να έχει απόλυτη βεβαιότητα/ακριβεια. 
+ []
+
+
+Overfull \hbox (14.52283pt too wide) in paragraph at lines 201--203
+\TU/NotoSans(0)/m/n/12 ότι το VAE κατάφερε να μάθει μια αποτελεσματική αναπαράσταση του περιβάλλοντος
+ []
+
+) [22<./figures/Dreamsfull1.png>]
+\openout2 = chapters/conclusions.aux
+ (./chapters/conclusions.tex
+Overfull \hbox (4.62955pt too wide) in paragraph at lines 3--4
+\TU/NotoSans(0)/m/n/12 την αρχή και τον εφαρμόσαμε στο περιβάλλον \TU/DejaVuSansMono(0)/m/n/12 CarRacing-V3 \TU/NotoSans(0)/m/n/12 του Gymnasium. Μέσω
+ []
+
+
+Overfull \hbox (5.81691pt too wide) in paragraph at lines 3--4
+\TU/NotoSans(0)/m/n/12 της ανάλυσης της εκπαιδευτικής διαδικασίας και των αποτελεσμάτων, καταλήγουμε
+ []
+
+
+Overfull \hbox (21.55899pt too wide) in paragraph at lines 8--10
+[]\TU/NotoSans(0)/b/n/12 Εκμάθηση Δυναμικής: \TU/NotoSans(0)/m/n/12 Το world model κατάφερε επιτυχώς να μάθει τη δυναμική
+ []
+
+
+Overfull \hbox (19.40094pt too wide) in paragraph at lines 10--12
+\TU/NotoSans(0)/m/n/12 πράκτορα «στη φαντασία» (λανθάνοντα χώρο), μειώνοντας δραστικά την ανάγκη
+ []
+
+
+Overfull \hbox (23.34592pt too wide) in paragraph at lines 12--14
+[]\TU/NotoSans(0)/b/n/12 Αποδοτικότητα Πόρων: \TU/NotoSans(0)/m/n/12 Η στρατηγική χρήση ασπρόμαυρων εικόνων (grayscale)
+ []
+
+<figures/training_overview.png, id=442, 859.0494pt x 591.1686pt>
+File: figures/training_overview.png Graphic file (type png)
+<use figures/training_overview.png>
+Package luatex.def Info: figures/training_overview.png  used on input line 18.
+(luatex.def)             Requested size: 409.71692pt x 281.9536pt.
+) [23
+
+
+
+] [24<./figures/training_overview.png>]
+\openout2 = chapters/references.aux
+ (./chapters/references.tex
+Underfull \hbox (badness 3302) in paragraph at lines 4--8
+[]\TU/NotoSans(0)/m/n/12 Hafner, D., Lillicrap, T., Ba, J., & Norouzi, M. (2020). \TU/NotoSans(0)/m/it/12 Dream to Control:
+ []
+
+
+Underfull \hbox (badness 1515) in paragraph at lines 10--14
+\TU/NotoSans(0)/m/n/12 J. (2019). \TU/NotoSans(0)/m/it/12 Learning Latent Dynamics for Planning from Pixels\TU/NotoSans(0)/m/n/12 . International
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+[]\TU/NotoSans(0)/m/n/12 Kingma, D. P., & Welling, M. (2014). \TU/NotoSans(0)/m/it/12 Auto-Encoding Variational Bayes\TU/NotoSans(0)/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+\TU/NotoSans(0)/m/n/12 International Conference on Learning Representations (ICLR). [][]$\TU/DejaVuSansMono(0)/m/n/12 https:
+ []
+
+
+Underfull \hbox (badness 1137) in paragraph at lines 33--37
+\TU/NotoSans(0)/m/it/12 Decoder for Statistical Machine Translation\TU/NotoSans(0)/m/n/12 . EMNLP. [][]$\TU/DejaVuSansMono(0)/m/n/12 https://arxiv.org/abs/
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 39--42
+[]\TU/NotoSans(0)/m/n/12 Farama Foundation. (2023). \TU/NotoSans(0)/m/it/12 Gymnasium: A Standard API for Reinforcement
+ []
+
+) [25
+
+
+
+]
+The property list \polyglossia@langsetup contains the pairs (without outer
+braces):
+>  {latex/script}  =>  {latin}
+>  {latex/lcscript}  =>  {latin}
+>  {latex/scripttag}  =>  {}
+>  {latex/language}  =>  {Latex}
+>  {latex/langtag}  =>  {ENG}
+>  {latex/bcp47}  =>  {}
+>  {latex/hyphennames}  =>  {english}
+>  {latex/direction}  =>  {LR}
+>  {latex/hyphenmins}  =>  {2,3}
+>  {latex/frenchspacing}  =>  {false}
+>  {latex/indentfirst}  =>  {false}
+>  {latex/fontsetup}  =>  {true}
+>  {latex/envname}  =>  {latex}
+>  {latex/babelname}  =>  {latex}
+>  {latex/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {latex/DefineCommandsCmd}  =>  {use_none:n}
+>  {greek/script}  =>  {Greek}
+>  {greek/lcscript}  =>  {greek}
+>  {greek/scripttag}  =>  {grek}
+>  {greek/language}  =>  {Greek}
+>  {greek/langtag}  =>  {ELL}
+>  {greek/bcp47}  =>  {el-monoton}
+>  {greek/hyphennames}  =>  {}
+>  {greek/direction}  =>  {LR}
+>  {greek/hyphenmins}  =>  {2,3}
+>  {greek/frenchspacing}  =>  {true}
+>  {greek/indentfirst}  =>  {true}
+>  {greek/fontsetup}  =>  {true}
+>  {greek/envname}  =>  {greek}
+>  {greek/babelname}  =>  {greek}
+>  {greek/localnumeral}  =>  {greeknumerals}
+>  {greek/Localnumeral}  =>  {Greeknumerals}
+>  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}
+>  {english/script}  =>  {latin}
+>  {english/lcscript}  =>  {latin}
+>  {english/scripttag}  =>  {}
+>  {english/language}  =>  {English}
+>  {english/langtag}  =>  {ENG}
+>  {english/bcp47}  =>  {en-US}
+>  {english/hyphennames}  =>  {english,american,usenglish,USenglish}
+>  {english/direction}  =>  {LR}
+>  {english/hyphenmins}  =>  {2,3}
+>  {english/frenchspacing}  =>  {false}
+>  {english/indentfirst}  =>  {false}
+>  {english/fontsetup}  =>  {true}
+>  {english/envname}  =>  {english}
+>  {english/babelname}  =>  {american}
+>  {english/localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/Localnumeral}  =>  {polyglossia@C@localnumeral}
+>  {english/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
+The property list \__xpg_alias contains the pairs (without outer braces):
+>  {latex/target}  =>  {latex}
+>  {greek/target}  =>  {greek}
+>  {grc/target}  =>  {greek}
+>  {grc/variant}  =>  {ancient}
+>  {grc/options}  =>  {variant=ancient}
+>  {el-polyton/target}  =>  {greek}
+>  {el-polyton/options}  =>  {varant=polytonic}
+>  {el-monoton/target}  =>  {greek}
+>  {el-monoton/variant}  =>  {monotonic}
+>  {el-monoton/options}  =>  {variant=monotonic}
+>  {el/target}  =>  {greek}
+>  {polutonikogreek/target}  =>  {greek}
+>  {polutonikogreek/variant}  =>  {polytonic}
+>  {polutonikogreek/options}  =>  {variant=polytonic}
+>  {english/target}  =>  {english}
+>  {en/target}  =>  {english}
+>  {en-AU/target}  =>  {english}
+>  {en-AU/variant}  =>  {australian}
+>  {en-AU/options}  =>  {variant=australian}
+>  {en-CA/target}  =>  {english}
+>  {en-CA/variant}  =>  {canadian}
+>  {en-CA/options}  =>  {variant=canadian}
+>  {en-GB/target}  =>  {english}
+>  {en-GB/variant}  =>  {british}
+>  {en-GB/options}  =>  {variant=british}
+>  {en-NZ/target}  =>  {english}
+>  {en-NZ/variant}  =>  {newzealand}
+>  {en-NZ/options}  =>  {variant=newzealand}
+>  {en-US/target}  =>  {english}
+>  {en-US/variant}  =>  {us}
+>  {en-US/options}  =>  {variant=us}
+>  {american/target}  =>  {english}
+>  {american/variant}  =>  {us}
+>  {american/options}  =>  {variant=us}
+>  {australian/target}  =>  {english}
+>  {australian/variant}  =>  {australian}
+>  {australian/options}  =>  {variant=australian}
+>  {british/target}  =>  {english}
+>  {british/variant}  =>  {british}
+>  {british/options}  =>  {variant=british}
+>  {canadian/target}  =>  {english}
+>  {canadian/variant}  =>  {canadian}
+>  {canadian/options}  =>  {variant=canadian}
+>  {newzealand/target}  =>  {english}
+>  {newzealand/variant}  =>  {newzealand}
+>  {newzealand/options}  =>  {variant=newzealand}.
+ (./main.aux (./chapters/title_page.aux) (./chapters/abstract.aux) (./chapters/introduction.aux) (./chapters/components.aux) (./chapters/algorithm.aux) (./chapters/experiments.aux) (./chapters/results.aux) (./chapters/conclusions.aux) (./chapters/references.aux))
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: F5D77D5FA72BDEF6220F24D8569023F2;5282.
+)
+
+Here is how much of LuaTeX's memory you used:
+ 38450 strings out of 478285
+ 305311,1977958 words of node,token memory allocated
+ 718 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 5 kern, 1 penalty, 3 glyph, 24 attribute, 67 glue_spec, 24 attribute_list, 4 write, 3 pdf_action nodes
+   avail lists: 1:5,2:3519,3:324,4:7214,5:5582,6:98,7:8057,8:72,9:13731,10:31,11:477
+ 56709 multiletter control sequences out of 65536+600000
+ 118 fonts using 60899607 bytes
+ 89i,13n,118p,1034b,1011s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono-Oblique.ttf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono-Bold.ttf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono.ttf></usr/share/fonts/google-noto-vf/NotoSans-Italic[wght].ttf></usr/share/fonts/google-noto/NotoSans-Regular.ttf></usr/share/fonts/google-noto/NotoSans-Bold.ttf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (26 pages, 1115041 bytes).
+
+PDF statistics: 573 PDF objects out of 1000 (max. 8388607)
+ 474 compressed objects within 5 object streams
+ 204 named destinations out of 1000 (max. 131072)
+ 240 words of extra memory for PDF output out of 10000 (max. 100000000)
+

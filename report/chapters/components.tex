@@ -1,0 +1,228 @@
+\section{Components}
+
+Ας δούμε όλα τα components ένα ένα:
+\subsection{Variational Autoencoder (VAE)}
+Ο VAE αποτελεί ένα βασικό εργαλείο για την κωδικοποίηση εικόνων σε λανθάνοντα χώρο. 
+Περιλαμβάνει έναν encoder και έναν decoder
+% image 1
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/VAE_Basic.png}
+    \caption{Βασική δομή ενός VAE \cite{wiki:vae}}
+\end{figure}
+
+
+
+\subsubsection{Encoder: $p(s_t \mid s_{t-1}, a_{t-1}, o_t)$}
+    
+
+Ο ρόλος του είναι να παίρνει μία εικόνα και να την μετατρέπει σε μοντέλο. 
+Το να επεξεργαζόμαστε συνεχώς μία εικόνα δεν έχει νόημα καθώς εμπεριέχει πολλή περιττή πληροφορία και 
+βαραίνει την εκπαίδευση. Αντίθετα αυτό που χρειαζόμαστε είναι να εξάγουμε την δυναμική του μοντέλου. 
+Αντί να την εξάγουμε μέσω φυσικής την προσεγγίζουμε με την χρήση του encoder \cite{vae}.
+
+ 
+
+\begin{itemize}
+    \item Είσοδος: 64x64 (ασπρόμαυρη εικόνα)
+    \item Έξοδος: Ένα διάνυσμα με μέγεθος 1024 bits
+\end{itemize}
+\begin{lstlisting}
+self.net = nn.Sequential(
+    # (1, 64, 64) -> (32, 31, 31)
+    nn.Conv2d(in_channels, 32, kernel_size=4, stride=2),
+    nn.ReLU(),
+   
+    # (32, 31, 31) -> (64, 14, 14)
+    nn.Conv2d(32, 64, kernel_size=4, stride=2),
+    nn.ReLU(),
+   
+    # (64, 14, 14) -> (128, 6, 6)
+    nn.Conv2d(64, 128, kernel_size=4, stride=2),
+    nn.ReLU(),
+   
+    # (128, 6, 6) -> (256, 2, 2)
+    nn.Conv2d(128, 256, kernel_size=4, stride=2),
+    nn.ReLU(),
+   
+    # (256, 2, 2) -> (1024,)
+    nn.Flatten()
+)
+
+# Output dimension
+self.embed_dim = 256 * 2 * 2  # = 1024
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{Decoder: $p(\hat{o}_t \mid s_t)$}
+Ο ρόλος του είναι να  λάβει ένα state [h, z] και να την μετατρέπει σε ασπρόμαυρη εικόνα. Μας είναι χρήσιμος καθώς μας επιτρέπει να απεικονίσουμε την φαντασία και να έχουμε μία καλύτερη εποπτεία με μια “γενικευμένη εικόνα” του δρόμου.
+\begin{itemize}
+    \item Είσοδος: 230 αριθμοί
+    \item Έξοδος: 64x64 (ασπρόμαυρη εικόνα)
+\end{itemize}
+\begin{lstlisting}
+def __init__(self, state_dim=230, out_channels=1):
+    """
+    Args:
+        state_dim: Dimension of model state (h, z). Default: 200 + 30 = 230
+        out_channels: Number of output image channels (1 for grayscale)
+    """
+    super().__init__()
+   
+    # Project state to spatial format
+    self.fc = nn.Linear(state_dim, 1024)
+   
+    # Transposed convolutions to upsample
+    self.net = nn.Sequential(
+        # (1024,) -> (1024, 1, 1)
+        nn.Unflatten(1, (1024, 1, 1)),
+       
+        # (1024, 1, 1) -> (128, 5, 5)
+        nn.ConvTranspose2d(1024, 128, kernel_size=5, stride=2),
+        nn.ReLU(),
+       
+        # (128, 5, 5) -> (64, 13, 13)
+        nn.ConvTranspose2d(128, 64, kernel_size=5, stride=2),
+        nn.ReLU(),
+       
+        # (64, 13, 13) -> (32, 30, 30)
+        nn.ConvTranspose2d(64, 32, kernel_size=6, stride=2),
+        nn.ReLU(),
+       
+        # (32, 30, 30) -> (1, 64, 64)
+        nn.ConvTranspose2d(32, out_channels, kernel_size=6, stride=2),
+        nn.Sigmoid()  # Output in [0, 1] range
+    )
+\end{lstlisting}
+
+% image 2
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/VAE_analytic.png}
+    \caption{Η αναλυτική δομή του VAE που χρησιμοποιείται στον Dreamer \cite{worldmodels}}
+\end{figure}
+
+\subsubsection{Επιλογή Ασπρόμαυρης Επεξεργασίας}
+
+Η επιλογή μετατροπής των εικόνων σε ασπρόμαυρες (grayscale) αντί για έγχρωμες (RGB) 
+έγινε για τους εξής λόγους:
+
+\begin{itemize}
+    \item \textbf{Μείωση υπολογιστικού κόστους:} Μία ασπρόμαυρη εικόνα 64×64 έχει 
+    4,096 τιμές, ενώ μία έγχρωμη έχει 12,288 (3× περισσότερες). Αυτό μειώνει σημαντικά 
+    τον χρόνο εκπαίδευσης, ιδιαίτερα χωρίς GPU.
+    
+    \item \textbf{Επαρκής πληροφορία:} Στο περιβάλλον CarRacing-V3, η κρίσιμη 
+    πληροφορία (θέση δρόμου, όρια πίστας, θέση αυτοκινήτου) διατηρείται πλήρως 
+    στην ασπρόμαυρη αναπαράσταση. Το χρώμα δεν προσφέρει επιπλέον σημασιολογική 
+    πληροφορία για την εργασία.
+    
+    \item \textbf{Μικρότερο μοντέλο:} Ο encoder χρειάζεται λιγότερες παραμέτρους 
+    (1 κανάλι εισόδου αντί για 3), μειώνοντας την πιθανότητα overfitting με 
+    περιορισμένα δεδομένα εκπαίδευσης.
+    
+    \item \textbf{Συμβατότητα με World Models:} Η αρχιτεκτονική VAE που χρησιμοποιούμε 
+    βασίζεται στην εργασία των Ha \& Schmidhuber \cite{worldmodels}, η οποία επίσης 
+    χρησιμοποιεί ασπρόμαυρες εικόνες.
+\end{itemize}
+
+
+
+
+
+\subsection{Recurrent State Space Model (RSSM)}
+Αποτελείται από 2 μέρη. Μία ντετερμινιστική κατάσταση $h$ και μία στοχαστική κατάσταση $z$ που αντιπροσωπεύει 
+την αβεβαιότητα της παρούσας κατάστασης. 
+Ο συνδυασμός μας επιτρέπει να προβλέπουμε πιθανά σενάρια όχι μόνο τα σίγουρα.
+
+\begin{itemize}
+    \item Η λειτουργία **Transition** του RSSM πραγματοποιεί την μετάβαση $q(s_t \mid s_{t-1}, a_{t-1})$. 
+    Πηγαίνει στην λανθάνουσα κατάσταση $h_t = \text{GRU}(h_{t-1}, \text{concat}(z_{t-1}, a_{t-1}))$ που είναι η πρόβλεψη για το μέλλον. 
+    Στη συνέχεια υπολογίζει την πιθανότητα της επόμενης κατάστασης με βάση την παρούσα δηλαδή την prior πιθανότητα $p(z_t \mid h_t)$.
+    στον κώδικα το Transition υλοποιείται από την συνάρτηση imagine.
+    \item Η λειτουργία **Observe** πραγματοποιεί τον υπολογισμό $p(s_t \mid s_{t-1}, a_{t-1}, o_t)$. Δηλαδή, μετά το όνειρο, εκτιμάται η posterior πιθανότητα $q(z_t \mid h_t, e_t)$ όπου $e_t$ το σφάλμα μεταξύ $z_t$ και $h_t$. Μέσω αυτής ενημερώνεται το μοντέλο.
+\end{itemize}
+
+Στον πυρήνα του RSSM βρίσκεται ένα multi-layer Gated Recurrent Unit (GRU) RNN.
+
+\subsection{Reward Model}
+Ο ρόλος του είναι να λάβει την παρούσα κατάσταση $[h, z]$ και να προβλέψει την επιβράβευση της κατάστασης δηλαδή υλοποιεί την $q(r_t \mid s_t)$. Αυτό πραγματοποιείται μέσω ενός MLP.
+
+\begin{itemize}
+    \item \textbf{Είσοδος:} $[h, z]$ (len($[h, z]$) = 230 αριθμοί)
+    \item \textbf{Έξοδος:} Ένας αριθμός
+\end{itemize}
+
+\begin{lstlisting}
+def __init__(self, state_dim, hidden_dim=300):
+    super().__init__()
+    self.net = nn.Sequential(
+        nn.Linear(state_dim, hidden_dim),
+        nn.ELU(),
+        nn.Linear(hidden_dim, hidden_dim),
+        nn.ELU(),
+        nn.Linear(hidden_dim, 1)
+    )
+\end{lstlisting}
+
+\subsection{Actor}
+Ο ρόλος του είναι να αποφασίσει τι δράση να κάνει σε κάθε περίπτωση. Με βάση την αναμενόμενη τιμή του κέρδους αποφασίζει ποια είναι η καλύτερη επόμενη κίνηση. Ωστόσο προσθέτουμε και μία τυχαιότητα στις κινήσεις με στόχο την εξερεύνηση ενός μεγαλύτερου χώρου κινήσεων. Για να μετατρέψουμε την κίνηση σε actuation χρησιμοποιούμε την tanh και κάνουμε squash τις τιμές της επιτάχυνσης (γκάζι, φρένο) και στροφής στο χωρίο $[-1, 1]$.
+
+\begin{lstlisting}
+def __init__(self, state_dim, action_dim, hidden_dim=300, min_std=0.1, init_std=5.0):
+    super().__init__()
+    self.min_std = min_std
+    self.init_std = init_std
+   
+    self.net = nn.Sequential(
+        nn.Linear(state_dim, hidden_dim),
+        nn.ELU(),
+        nn.Linear(hidden_dim, hidden_dim),
+        nn.ELU(),
+    )
+   
+    self.mean_head = nn.Linear(hidden_dim, action_dim)
+    self.std_head = nn.Linear(hidden_dim, action_dim)
+\end{lstlisting}
+
+\subsubsection{Reparameterization Trick}
+Μία κρίσιμη λεπτομέρεια για την εκπαίδευση του VAE και του Actor είναι η δυνατότητα 
+υπολογισμού παραγώγων μέσω στοχαστικών κόμβων. Κανονικά, η δειγματοληψία $z \sim \mathcal{N}(\mu, \sigma)$ 
+δεν είναι παραγωγίσιμη πράξη. Ο Dreamer χρησιμοποιεί το \textbf{Reparameterization Trick}:
+\begin{equation}
+    z = \mu + \sigma \cdot \epsilon, \quad \text{όπου } \epsilon \sim \mathcal{N}(0, I)
+\end{equation}
+Αυτό επιτρέπει στα gradients να περάσουν ανεμπόδιστα προς τα $\mu$ και $\sigma$, επιτρέποντας 
+την εκπαίδευση του Encoder και του Actor μέσω backpropagation through time (BPTT).
+
+\subsection{Critic}
+Ο κριτής έχει ως στόχο την παραγωγή μίας εκτίμησης για το συνολικό κέρδος μέχρι τον ορίζοντα των ~15 βημάτων.
+
+\begin{lstlisting}
+def __init__(self, state_dim, hidden_dim=300):
+    super().__init__()
+    self.net = nn.Sequential(
+        nn.Linear(state_dim, hidden_dim),
+        nn.ELU(),
+        nn.Linear(hidden_dim, hidden_dim),
+        nn.ELU(),
+        nn.Linear(hidden_dim, 1)
+    )
+\end{lstlisting}
+
+\subsection{Value Estimation \texorpdfstring{$(V_\lambda)$}{V-lambda}}
+Για να εξισορροπηθεί η μεροληψία (bias) και η διακύμανση 
+(variance), ο Dreamer χρησιμοποιεί τον εκτιμητή 
+$V_\lambda$, ο οποίος είναι ένας εκθετικά σταθμισμένος 
+μέσος 
+όρος των εκτιμήσεων για διαφορετικούς ορίζοντες $k$.
+
+\begin{align}
+    V_{\mathrm{R}}(s_\tau) &\doteq \mathrm{E}_{q_\theta, q_\phi} \left( \sum_{n=\tau}^{t+H} r_n \right), \tag{4} \\[1em]
+    V_{\mathrm{N}}^k(s_\tau) &\doteq \mathrm{E}_{q_\theta, q_\phi} \left( \sum_{n=\tau}^{h-1} \gamma^{n-\tau} r_n + \gamma^{h-\tau} v_\psi(s_h) \right) \quad \text{with} \quad h = \min(\tau + k, t + H), \tag{5} \\[1em]
+    V_\lambda(s_\tau) &\doteq (1 - \lambda) \sum_{n=1}^{H-1} \lambda^{n-1} V_{\mathrm{N}}^n(s_\tau) + \lambda^{H-1} V_{\mathrm{N}}^H(s_\tau), \tag{6}
+\end{align}

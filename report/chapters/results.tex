@@ -1,0 +1,205 @@
+\section{Αποτελέσματα}
+
+\subsection{Standard Ρύθμιση}
+
+\begin{itemize}
+    \item \textbf{Device:} cpu
+    \item \textbf{Loaded model from:} 'dreamer\_best.pth'
+\end{itemize}
+
+Η εκπαίδευση πραγματοποιήθηκε με την ακόλουθη διαμόρφωση:
+
+\begin{table}[H]
+    \centering
+    % Ρύθμιση μικρότερης γραμματοσειράς
+    \footnotesize 
+    % Μείωση του ύψους των γραμμών για πιο συμπαγές αποτέλεσμα
+    \renewcommand{\arraystretch}{1.1} 
+    
+    % Χρήση tabularx για να ορίσουμε ακριβώς το 70% του πλάτους κειμένου
+    % Ο τύπος 'X' προσαρμόζει αυτόματα το πλάτος της δεύτερης στήλης
+    \begin{tabularx}{0.7\textwidth}{|l|X|}
+        \hline
+        \textbf{Παράμετρος} & \textbf{Τιμή} \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{lightGray}\textit{Περιβάλλον}} \\
+        \hline
+        Environment & CarRacing-V3 \\
+        Observation & $64 \times 64$ grayscale \\
+        Action space & [steering, gas, brake] $\in [-1,1]^3$ \\
+        Action repeat & 2 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{lightGray}\textit{Αρχιτεκτονική}} \\
+        \hline
+        Stochastic dim (z) & 30 \\
+        Deterministic dim (h) & 200 \\
+        Hidden dim & 300 \\
+        Embedding dim & 1024 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{lightGray}\textit{Εκπαίδευση}} \\
+        \hline
+        Total steps & 500,000 (target) / 23,500 (actual) \\
+        Seed episodes & 5 \\
+        Batch size & 50 \\
+        Sequence length & 50 \\
+        Imagination horizon & 15 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{lightGray}\textit{Hyperparameters}} \\
+        \hline
+        World model LR & $6 \times 10^{-4}$ \\
+        Actor LR & $8 \times 10^{-5}$ \\
+        Critic LR & $8 \times 10^{-5}$ \\
+        Discount ($\gamma$) & 0.99 \\
+        Lambda ($\lambda$) & 0.95 \\
+        Free nats & 3.0 \\
+        Gradient clip & 100 \\
+        \hline
+        \multicolumn{2}{|c|}{\cellcolor{lightGray}\textit{Hardware}} \\
+        \hline
+        Device & CPU \\
+        Training time & $\sim$ 48 hours \\
+        \hline
+    \end{tabularx}
+    \caption{Παράμετροι εκπαίδευσης}
+\end{table}
+
+\subsection{Σύνοψη Εκπαίδευσης}
+Το μονέλο εκπαιδεύτηκε συνολικά για 47 επεισόδια, με βήματα που κυμαίνονται από 500 έως 23,500. 
+Τα στατιστικά εκπαίδευσης δείχνουν σημαντική μείωση στο σφάλμα ανακατασκευής του μοντέλου, αν και το σήμα επιβράβευσης παρουσιάζει υψηλή διακύμανση, 
+κάτι που είναι τυπικό για την αρχική φάση της ενισχυτικής μάθησης σε σύνθετα περιβάλλοντα όπως το \texttt{CarRacing-V3}.   
+
+
+\subsection{Σύγκριση Επιδόσεων (Performance Comparison)}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        \textbf{Metric} & \textbf{Initial Model} & \textbf{Optimized Model (Final)} \\
+        \midrule
+        Mean Reward & -42.07 & \textbf{670.21} \\
+        Std Deviation & 8.17 & 165.03 \\
+        Min Reward & -53.18 & 372.13 \\
+        Max Reward & -27.97 & 837.04 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Σύγκριση επιδόσεων μεταξύ αρχικού και τελικού μοντέλου.}
+    \label{tab:comparison}
+\end{table}
+
+Αναλυτικά τα 5 επεισόδια της τελικής αξιολόγησης:
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ccr}
+        \toprule
+        \textbf{Episode} & \textbf{Steps} & \textbf{Reward} \\
+        \midrule
+        1 & 1000 & 837.04 \\
+        2 & 1000 & 654.97 \\
+        3 & 1000 & 678.17 \\
+        4 & 1000 & 372.13 \\
+        5 & 1000 & 808.75 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Αναλυτικά αποτελέσματα του βελτιστοποιημένου μοντέλου.}
+\end{table}
+
+Το υψηλό μέσο reward (670.21) υποδεικνύει ότι ο πράκτορας έμαθε επιτυχώς 
+να πλοηγείται στην πίστα, παραμένοντας εντός δρόμου και διατηρώντας ικανοποιητική ταχύτητα.
+
+\subsection{Οπτική Παρατήρηση}
+Παρακάτω δείχνουμε κάποιες εικόνες από το περιβάλλον προσομοίωσης με μία γρήγορη εκπαίδευση 5000 βημάτων. Η πρώτη μας δείχνει ότι το αυτοκίνητο παρόλο που ο δρόμος είναι ευθεία πάει να στρίψει. 
+Στην δεύτερη έχει βγει εκτός πορείας.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/run1.png}
+        \caption{Αυτοκίνητο που στρίβει σε ευθεία}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/run2.png}
+        \caption{Αυτοκίνητο εκτός πορείας}
+    \end{subfigure}
+    \caption{Εικόνες από την προσομοίωση}
+\end{figure}
+Παρατηρούμε λοιπόν ότι το μοντέλο δεν έχει μάθει ακόμα να κρατιέται στην πορεία, δεν καταλαβαίνει καν τι χρειάζεται να κάνει.
+Αυτό είναι λογικό και αναμενόμενο αφού η μέθοδος του Dreamer απαιτεί πολλές ώρες εκπαίδευσης και μεγάλο αριθμό βημάτων δοκιμής
+και αποτυχίας μέχρι να φτάσει σε ικανοποιητικά αποτελέσματα.
+
+Παρακάτω βλέπουμε πώς απεικονίζονται τα όνειρα κατά την διάρκεια του testing.
+\begin{figure}[H]
+    \centering
+    % Εικόνα 1
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Dreams1.png}
+        \caption{Αυτοκίνητο που κινείται κανονικά σε ευθεία, 5 όνειρα και ανακατασκευή}
+    \end{subfigure}
+    
+    \vspace{1cm} 
+    
+    % Εικόνα 2
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Dreams2.png}
+        \caption{Αυτοκίνητο οριακά εκτός πορείας σε ευθεία, 5 όνειρα και ανακατασκευή}
+    \end{subfigure}
+    \pagebreak
+    \vspace{1cm}
+    \caption{Εικόνες από το testing με όνειρα και ανακατασκευές}
+\end{figure}
+
+Στη συνέχεια πραγματοποιήσαμε εκπαίδευση για 23500 βήματα 
+και παρακάτω παρουσιάζουμε τα όνειρα (dreams) και τις ανακατασκευές (reconstructions) που παράγει το μοντέλο.
+
+\begin{figure}[H]
+    \centering
+    % Εικόνα 3
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Dreamsonly1.png}
+        \caption{Αυτοκίνητο εντός πορείας σε στροφή και 5 όνειρα}
+    \end{subfigure}
+
+    \vspace{1cm}
+
+    % Εικόνα 4
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Dreamsonly2.png}
+        \caption{Αυτοκίνητο οριακά εντός πορείας σε ευθεία και 5 όνειρα}
+    \end{subfigure}
+
+    \vspace{1cm}
+    \caption{Εικόνες από το testing με όνειρα}
+\end{figure}
+
+Παρατηρούμε ότι με 23000 βήματα εκπαίδευσης τα αποτελέσματα είναι πολύ καλύτερα αλλά κάποιες φορές πάει να βγει εκτός πορείας.
+Τέλος, παρακάτω παρουσιάζουμε όνειρα και ανακατασκευές από ένα καλύτερο run.
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=\textwidth]{figures/Dreams5.png} 
+    \caption{Επιτυχημένη οδήγηση με όνειρα και ανακατασκευή}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \centering
+    \includegraphics[width=\textwidth]{figures/Dreamsfull1.png} 
+    \caption{Επιτυχημένη οδήγηση με όνειρα και ανακατασκευή (απότομη στροφή)} 
+\end{figure}
+Παρατηρούμε ότι τα όνειρα διατηρούν βασικά χαρακτηριστικά της πραγματικής εικόνας, όπως η θέση του δρόμου και του αυτοκινήτου,
+αλλά ταυτόχρονα παρουσιάζουν παραμορφώσεις και απώλειες λεπτομερειών, όσο εξελισσεται ο δρόμος και ειδικά προς τις στροφές.
+Αυτή είναι η δουλειά του ονείρου να προβλέπει την μελλοντική κατάσταση βασισμένο στην τρέχουσα, χωρίς να έχει απόλυτη βεβαιότητα/ακριβεια.
+
+Οι ανακατασκευές είναι αρκετά πιστές στις αρχικές εικόνες, υποδεικνύοντας ότι το VAE κατάφερε να μάθει μια αποτελεσματική 
+αναπαράσταση του περιβάλλοντος τόσο για κωδικοποίηση όσο και για ανακατασκευή.
+
+Ακόμα και σε κλειστές στροφές βρίσκει τον τρόπο να παραμείνει στην πορεία, δείχνοντας ότι ο πράκτορας έχει μάθει μια 
+ικανοποιητική πολιτική οδήγησης.

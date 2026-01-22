@@ -18,8 +18,6 @@ import numpy as np
 import cv2
 import pandas as pd
 import os
-from collections import deque
-
 from replay import ReplayBuffer
 from dreamer import Dreamer
 
@@ -39,7 +37,7 @@ HIDDEN_DIM = 300        # Hidden layer size for actor/critic/reward
 EMBED_DIM = 1024        # Image embedding dimension
 
 # Training
-TOTAL_ENV_STEPS = 500000    # Total environment steps (paper uses 5M for control suite)
+TOTAL_ENV_STEPS = 1000000   # Total environment steps (paper uses 5M for control suite)
 SEED_EPISODES = 5           # Random episodes to seed replay buffer
 COLLECT_INTERVAL = 100      # Collect this many steps, then train
 TRAIN_STEPS = 100           # Gradient steps per collection phase
@@ -56,6 +54,16 @@ FREE_NATS = 3.0             # KL divergence free threshold
 KL_SCALE = 1.0              # KL loss coefficient (β in the paper)
 GRAD_CLIP = 100             # Gradient norm clipping
 
+# Learning rates (from paper) -> hardcoded in dreamer.py optimizers
+WORLD_MODEL_LR = 6e-4
+ACTOR_LR = 8e-5
+CRITIC_LR = 8e-5
+
+
+# Logging
+LOG_INTERVAL = 10           # Log every N episodes
+SAVE_INTERVAL = 50000       # Save checkpoint every N steps
+
 # Device
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -65,14 +73,6 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==============================================================================
 
 def preprocess(obs):
-    """
-    Preprocess observation for the model.
-    
-    Args:
-        obs: RGB image from environment, shape (96, 96, 3)
-    Returns:
-        Grayscale normalized image, shape (1, 64, 64)
-    """
     # Resize to 64x64
     img = cv2.resize(obs, (64, 64))
     # Convert to grayscale
@@ -83,22 +83,8 @@ def preprocess(obs):
 
 def compute_lambda_returns(rewards, values, gamma=GAMMA, lambda_=LAMBDA):
     """
-    Compute V_λ targets using TD(λ) / GAE-style returns.
-    
-    From Equation 6 in the paper:
-    V_λ(s_τ) = (1-λ) Σ_{n=1}^{H-1} λ^{n-1} V_N^n(s_τ) + λ^{H-1} V_N^H(s_τ)
-    
-    This can be computed recursively:
-    V_λ(s_τ) = r_τ + γ[(1-λ)v(s_{τ+1}) + λ V_λ(s_{τ+1})]
-    
-    Args:
-        rewards: Predicted rewards, shape (H, B, 1)
-        values: Predicted values, shape (H+1, B, 1) - includes bootstrap value
-        gamma: Discount factor
-        lambda_: GAE lambda parameter
-        
-    Returns:
-        targets: V_λ targets, shape (H, B, 1)
+    Compute V_λ 
+
     """
     H = len(rewards)
     
@@ -117,19 +103,6 @@ def compute_lambda_returns(rewards, values, gamma=GAMMA, lambda_=LAMBDA):
 
 
 def process_action_for_env(action):
-    """
-    Convert tanh-squashed action to CarRacing action space.
-    
-    CarRacing actions:
-    - action[0]: Steering in [-1, 1]
-    - action[1]: Gas in [0, 1]
-    - action[2]: Brake in [0, 1]
-    
-    Args:
-        action: Tanh output in [-1, 1], shape (3,)
-    Returns:
-        Processed action for environment
-    """
     processed = action.copy()
     # Steering stays in [-1, 1] (already there from tanh)
     # Gas: map from [-1, 1] to [0, 1]
@@ -139,55 +112,13 @@ def process_action_for_env(action):
     return processed
 
 
-class EarlyStopper:
-    """Early stopping based on moving average of episode rewards."""
-    
-    def __init__(self, patience=20, min_delta=5.0, window=10):
-        self.patience = patience
-        self.min_delta = min_delta
-        self.window = window
-        self.rewards = deque(maxlen=window)
-        self.best_avg = -np.inf
-        self.counter = 0
-        self.should_stop = False
-        
-    def __call__(self, reward):
-        self.rewards.append(reward)
-        
-        if len(self.rewards) >= self.window:
-            avg = np.mean(self.rewards)
-            if avg > self.best_avg + self.min_delta:
-                self.best_avg = avg
-                self.counter = 0
-                print(f"  → New best average: {self.best_avg:.2f}")
-            else:
-                self.counter += 1
-                if self.counter >= self.patience:
-                    self.should_stop = True
-                    
-        return self.should_stop
-
 
 # ==============================================================================
 # TRAINING FUNCTIONS
 # ==============================================================================
 
 def train_world_model(agent, obs_batch, action_batch, reward_batch):
-    """
-    Train the world model (encoder, decoder, RSSM, reward model).
     
-    Loss = reconstruction_loss + reward_loss + KL_scale * KL_loss
-    
-    Args:
-        agent: Dreamer agent
-        obs_batch: Observations, shape (B, T, 1, H, W)
-        action_batch: Actions, shape (B, T, action_dim)
-        reward_batch: Rewards, shape (B, T, 1)
-        
-    Returns:
-        loss: Total loss value
-        metrics: Dict with loss components
-    """
     B, T = obs_batch.shape[:2]
     
     # Initialize RSSM states
@@ -197,6 +128,7 @@ def train_world_model(agent, obs_batch, action_batch, reward_batch):
     recon_losses = []
     reward_losses = []
     kl_losses = []
+    free_nats_tensor = torch.tensor(FREE_NATS, device=DEVICE)
     
     for t in range(T):
         obs_t = obs_batch[:, t]  # (B, 1, H, W)
@@ -226,7 +158,7 @@ def train_world_model(agent, obs_batch, action_batch, reward_batch):
         # KL divergence: KL(posterior || prior) with free nats
         kl = D.kl_divergence(posterior_dist, prior_dist)
         kl = kl.sum(dim=-1).mean()  # Sum over latent dims, mean over batch
-        kl = torch.max(kl, torch.tensor(FREE_NATS, device=DEVICE))
+        kl = torch.max(kl, free_nats_tensor)
         kl_losses.append(kl)
     
     # Aggregate losses
@@ -241,7 +173,7 @@ def train_world_model(agent, obs_batch, action_batch, reward_batch):
     total_loss.backward()
     nn.utils.clip_grad_norm_(
         list(agent.encoder.parameters()) + 
-        list(agent.decoder.parameters()) + 
+        list(agent.decoder.parameters()) +
         list(agent.rssm.parameters()) + 
         list(agent.reward_model.parameters()),
         GRAD_CLIP
@@ -259,26 +191,8 @@ def train_world_model(agent, obs_batch, action_batch, reward_batch):
 
 
 def train_actor_critic(agent, obs_batch, action_batch):
-    """
-    Train actor and critic by imagination (behavior learning).
-    
-    1. Encode observations and get posterior states
-    2. From these states, imagine trajectories forward using prior
-    3. Compute V_λ targets
-    4. Update actor to maximize V_λ
-    5. Update critic to predict V_λ
-    
-    Args:
-        agent: Dreamer agent
-        obs_batch: Observations, shape (B, T, 1, H, W)
-        action_batch: Actions, shape (B, T, action_dim)
-        
-    Returns:
-        actor_loss, critic_loss: Loss values
-    """
+
     B, T = obs_batch.shape[:2]
-    
-    # ==== Phase 1: Get posterior states from real data ====
     with torch.no_grad():
         h, z = agent.get_initial_state(B)
         
@@ -293,10 +207,6 @@ def train_actor_critic(agent, obs_batch, action_batch):
         start_states = torch.stack(posterior_states, dim=0)  # (T, B, state_dim)
         start_states = start_states.reshape(-1, agent.state_dim)  # (T*B, state_dim)
     
-    # ==== Phase 2: Imagine trajectories from posterior states ====
-    # Start imagination from detached posterior states
-    # Gradients flow through actor but not through world model to posterior
-    
     # Split states back into h and z
     dream_h = start_states[:, :agent.det_dim].clone()
     dream_z = start_states[:, agent.det_dim:].clone()
@@ -305,8 +215,7 @@ def train_actor_critic(agent, obs_batch, action_batch):
     imagined_states = [start_states]  # Include starting states
     imagined_rewards = []
     
-    # Dream forward
-    for _ in range(HORIZON):
+    for _ in range(HORIZON): #dream steps
         # Current state
         state = agent.get_state_feature(dream_h, dream_z)
         
@@ -333,34 +242,32 @@ def train_actor_critic(agent, obs_batch, action_batch):
     imagined_states = torch.stack(imagined_states, dim=0)  # (H+1, T*B, state_dim)
     imagined_rewards = torch.stack(imagined_rewards, dim=0)  # (H, T*B, 1)
     
-    # ==== Phase 3: Compute values and V_λ targets ====
-    # Get values for all imagined states (including bootstrap)
     with torch.no_grad():
         # Values for target computation (stop gradient for critic targets)
         imagined_values = agent.critic(imagined_states.reshape(-1, agent.state_dim))
         imagined_values = imagined_values.reshape(HORIZON + 1, -1, 1)  # (H+1, T*B, 1)
     
-    # Compute V_λ targets
-    lambda_targets = compute_lambda_returns(imagined_rewards, imagined_values)  # (H, T*B, 1)
-    
-    # ==== Phase 4: Update Actor ====
-    # Actor objective: maximize V_λ(s_τ) for τ = 0 to H-1
-    # We use states[0:H] (not the final bootstrap state)
-    
-    # Re-compute values with gradients through actor
+    # Compute V_λ targets using detached values
+    lambda_targets = compute_lambda_returns(imagined_rewards, imagined_values, GAMMA, LAMBDA)  # (H, T*B, 1)
+
+    # without gradients
     actor_states = imagined_states[:-1]  # (H, T*B, state_dim) - exclude bootstrap state
     
-    # Actor loss: negative of mean V_λ (we want to maximize)
-    actor_loss = -lambda_targets.mean()
+    # Recompute values with gradients through the critic
+    actor_values = agent.critic(actor_states.reshape(-1, agent.state_dim))
+    actor_values = actor_values.reshape(HORIZON, -1, 1)  # (H, T*B, 1)
+    
+    # Actor maximize expected value
+    actor_loss = -actor_values.mean()
     
     agent.actor_opt.zero_grad()
     actor_loss.backward()
     nn.utils.clip_grad_norm_(agent.actor.parameters(), GRAD_CLIP)
     agent.actor_opt.step()
     
-    # ==== Phase 5: Update Critic ====
-    # Critic objective: minimize MSE between v(s) and V_λ(s)
-    # Detach both states and targets
+  
+    # Critic minimize MSE between v(s) and V_λ(s)
+    # Use detached states and targets = no gradients through world model
     
     critic_states = imagined_states[:-1].detach()  # (H, T*B, state_dim)
     critic_targets = lambda_targets.detach()  # (H, T*B, 1)
@@ -369,6 +276,7 @@ def train_actor_critic(agent, obs_batch, action_batch):
     pred_values = agent.critic(critic_states.reshape(-1, agent.state_dim))
     pred_values = pred_values.reshape(HORIZON, -1, 1)
     
+    # MSE loss
     critic_loss = F.mse_loss(pred_values, critic_targets)
     
     agent.critic_opt.zero_grad()
@@ -416,8 +324,9 @@ def main():
         'critic_loss': []
     }
     
-    # Early stopping
-    stopper = EarlyStopper(patience=30, min_delta=10.0, window=10)
+    # Track best reward for checkpointing
+    best_avg_reward = -float('inf')
+    recent_rewards = []
     
     # ==== Phase 1: Seed buffer with random episodes ====
     print(f"\nSeeding buffer with {SEED_EPISODES} random episodes...")
@@ -466,112 +375,126 @@ def main():
     recent_model_loss = 0
     recent_actor_loss = 0
     recent_critic_loss = 0
-    
-    while global_step < TOTAL_ENV_STEPS:
-        # ==== Collect experience ====
-        for _ in range(COLLECT_INTERVAL):
-            obs_processed = preprocess(obs)
-            
-            # Get action from agent
-            action_tensor, prev_h, prev_z = agent.get_action(
-                obs_processed, prev_action, prev_h, prev_z,
-                deterministic=False
-            )
-            action = action_tensor.cpu().numpy()[0]
-            
-            # Add exploration noise
-            action = action + np.random.normal(0, 0.3, size=action.shape)
-            action = np.clip(action, -1, 1)
-            
-            # Process for environment
-            env_action = process_action_for_env(action)
-            
-            # Step with action repeat
-            total_reward = 0
-            done = False
-            for _ in range(ACTION_REPEAT):
-                next_obs, reward, terminated, truncated, _ = env.step(env_action)
-                total_reward += reward
-                if terminated or truncated:
-                    done = True
-                    break
-            
-            # Store transition
-            buffer.add(obs_processed, action, total_reward, done)
-            
-            # Update state
-            obs = next_obs
-            prev_action = action_tensor
-            global_step += 1
-            episode_reward += total_reward
-            
-            # Episode ended
-            if done:
-                episode += 1
-                print(f"Step {global_step} | Episode {episode}: reward = {episode_reward:.2f}")
+    try:
+        while global_step < TOTAL_ENV_STEPS:
+            # ==== Collect experience ====
+            for _ in range(COLLECT_INTERVAL):
+                obs_processed = preprocess(obs)
                 
-                # Log metrics
-                metrics_log['step'].append(global_step)
-                metrics_log['episode'].append(episode)
-                metrics_log['reward'].append(episode_reward)
-                metrics_log['model_loss'].append(recent_model_loss)
-                metrics_log['actor_loss'].append(recent_actor_loss)
-                metrics_log['critic_loss'].append(recent_critic_loss)
-                
-                # Check early stopping
-                if stopper(episode_reward):
-                    print(f"\n{'='*60}")
-                    print(f"Early stopping triggered!")
-                    print(f"{'='*60}")
-                    break
-                
-                # Reset for new episode
-                obs, _ = env.reset()
-                prev_action = torch.zeros(1, action_dim, device=DEVICE)
-                prev_h, prev_z = agent.get_initial_state(batch_size=1)
-                episode_reward = 0
-        
-        if stopper.should_stop:
-            break
-        
-        # ==== Training phase ====
-        agent.train()
-        
-        model_losses = []
-        actor_losses = []
-        critic_losses = []
-        
-        for _ in range(TRAIN_STEPS):
-            # Sample batch
-            try:
-                obs_batch, action_batch, reward_batch = buffer.sample_sequence(
-                    BATCH_SIZE, SEQ_LEN, DEVICE
+                # Get action from agent
+                action_tensor, prev_h, prev_z = agent.get_action(
+                    obs_processed, prev_action, prev_h, prev_z,
+                    deterministic=False
                 )
-            except ValueError as e:
-                print(f"Warning: {e}. Skipping training step.")
-                continue
+                action = action_tensor.cpu().numpy()[0]
+                
+                # Add exploration noise
+                action = action + np.random.normal(0, 0.3, size=action.shape)
+                action = np.clip(action, -1, 1)
+                
+                # Process for environment
+                env_action = process_action_for_env(action)
+                
+                # Step with action repeat
+                total_reward = 0
+                done = False
+                for _ in range(ACTION_REPEAT):
+                    next_obs, reward, terminated, truncated, _ = env.step(env_action)
+                    total_reward += reward
+                    if terminated or truncated:
+                        done = True
+                        break
+                
+                # Store transition
+                buffer.add(obs_processed, action, total_reward, done)
+                
+                # Update state
+                obs = next_obs
+                prev_action = action_tensor
+                global_step += 1
+                episode_reward += total_reward
+                
+                # Episode ended
+                if done:
+                    episode += 1
+                    recent_rewards.append(episode_reward)
+                    if len(recent_rewards) > 100:
+                        recent_rewards.pop(0)
+                    
+                    avg_reward = np.mean(recent_rewards[-10:]) if len(recent_rewards) >= 10 else episode_reward
+                    
+                    # Log every episode
+                    print(f"Step {global_step:7d} | Episode {episode:4d} | "
+                        f"Reward: {episode_reward:7.2f} | Avg(10): {avg_reward:7.2f}")
+                    
+                    # Log metrics
+                    metrics_log['step'].append(global_step)
+                    metrics_log['episode'].append(episode)
+                    metrics_log['reward'].append(episode_reward)
+                    metrics_log['model_loss'].append(recent_model_loss)
+                    metrics_log['actor_loss'].append(recent_actor_loss)
+                    metrics_log['critic_loss'].append(recent_critic_loss)
+                    
+                    # Save best model
+                    if len(recent_rewards) >= 10 and avg_reward > best_avg_reward:
+                        best_avg_reward = avg_reward
+                        torch.save(agent.state_dict(), "dreamer_best.pth")
+                        print(f"  --> New best average: {best_avg_reward:.2f}, saved to dreamer_best.pth")
+                    
+                    # Reset for new episode
+                    obs, _ = env.reset()
+                    prev_action = torch.zeros(1, action_dim, device=DEVICE)
+                    prev_h, prev_z = agent.get_initial_state(batch_size=1)
+                    episode_reward = 0
             
-            # Train world model
-            model_loss, _ = train_world_model(agent, obs_batch, action_batch, reward_batch)
-            model_losses.append(model_loss)
+            # ==== Training phase ====
+            agent.train()
             
-            # Train actor-critic
-            actor_loss, critic_loss = train_actor_critic(agent, obs_batch, action_batch)
-            actor_losses.append(actor_loss)
-            critic_losses.append(critic_loss)
-        
-        # Update recent losses for logging
-        if model_losses:
-            recent_model_loss = np.mean(model_losses)
-            recent_actor_loss = np.mean(actor_losses)
-            recent_critic_loss = np.mean(critic_losses)
-        
-        agent.eval()
-        
-        print(f"  Training @ step {global_step}: "
-              f"model={recent_model_loss:.4f}, "
-              f"actor={recent_actor_loss:.4f}, "
-              f"critic={recent_critic_loss:.4f}")
+            model_losses = []
+            actor_losses = []
+            critic_losses = []
+            
+            for _ in range(TRAIN_STEPS):
+                # Sample batch
+                try:
+                    obs_batch, action_batch, reward_batch = buffer.sample_sequence(
+                        BATCH_SIZE, SEQ_LEN, DEVICE
+                    )
+                except ValueError as e:
+                    print(f"Warning: {e}. Skipping training step.")
+                    continue
+                
+                # Train world model
+                model_loss, _ = train_world_model(agent, obs_batch, action_batch, reward_batch)
+                model_losses.append(model_loss)
+                
+                # Train actor-critic
+                actor_loss, critic_loss = train_actor_critic(agent, obs_batch, action_batch)
+                actor_losses.append(actor_loss)
+                critic_losses.append(critic_loss)
+            
+            # Update recent losses for logging
+            if model_losses:
+                recent_model_loss = np.mean(model_losses)
+                recent_actor_loss = np.mean(actor_losses)
+                recent_critic_loss = np.mean(critic_losses)
+            
+            agent.eval()
+            
+            print(f"  Training @ step {global_step}: "
+                f"model={recent_model_loss:.4f}, "
+                f"actor={recent_actor_loss:.4f}, "
+                f"critic={recent_critic_loss:.4f}")
+            
+            # Periodic checkpoint save
+            if global_step % SAVE_INTERVAL == 0:
+                checkpoint_path = f"dreamer_step{global_step}.pth"
+                torch.save(agent.state_dict(), checkpoint_path)
+                df = pd.DataFrame(metrics_log)
+                df.to_csv(f"training_log_step{global_step}.csv", index=False)
+                print(f"  --> Checkpoint saved: {checkpoint_path}")
+    except KeyboardInterrupt:
+        print("\nCaptured Ctrl+C. Stopping training and saving results")
     
     # ==== Save results ====
     print(f"\n{'='*60}")

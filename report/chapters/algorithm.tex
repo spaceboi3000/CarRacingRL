@@ -1,0 +1,103 @@
+\section{Αλγόριθμος}
+Η διαδικασία που ακολουθεί το Dreamer κατά την διάρκεια της εκπαίδευσης είναι η εξής:
+
+%% Dreamer Algorithm
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/dreamer_algorithm.png}
+\end{figure}
+
+
+
+
+Ποιο αναλυτικά και διαισθητικά, η παραπάνω διαδικασία περιγράφεται παρακάτω:
+\subsection{Αρχικοποίηση}
+Αρχικοποιούμε το βέλτιστο μέσο reward σε $-\infty$, τις παραμέτρους του μοντέλου ($\theta$) και του κριτή ($\psi$) τυχαία και παράγουμε $S = 5$ επεισόδια. Επιπλέον θέτουμε τις υπερπαραμέτρους ως εξής:
+\begin{itemize}
+    \item Until done = 500.000 βήματα
+    \item $C = 100, B = 50, L = 50, H = 15, T = 50$
+    \item \textbf{Learning rates:}
+    \begin{itemize}
+        \item World model (encoder, RSSM, decoder, reward): $6 \times 10^{-4}$
+        \item Value model (critic): $8 \times 10^{-5}$
+        \item Action model (actor): $8 \times 10^{-5}$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Φάση 1: Συλλογή δεδομένων}
+\begin{enumerate}
+    \item \textbf{Προεπεξεργασία:} Μετατροπή του frame $o_t$ σε ασπρόμαυρο, κανονικοποίηση των τιμών.
+    \item Ο encoder μετατρέπει το $o_t$ σε εκτίμηση της κατάστασης του συστήματος $[h, z]$.
+    \item Το RSSM παρατηρεί την τωρινή κατάσταση και εκτιμά τις prior και posterior της προηγούμενης κατάστασης.
+    \item Ο Actor επιλέγει μία κίνηση (action) με βάση την τωρινή κατάσταση.
+    \item Προσθέτουμε θόρυβο στο action για να επιτρέψουμε την εξερεύνηση νέων πολιτικών.
+    \item Πραγματοποιούμε την κίνηση στον πραγματικό κόσμο και παίρνουμε την επιβράβευση μας καθώς και το επόμενο frame $o_{t+1}$.
+    \item Αποθηκεύουμε την νέα κίνηση στον Replay Buffer.
+    \item Επαναλαμβάνουμε τα βήματα 1-8 μέχρι τις $C$ επαναλήψεις.
+\end{enumerate}
+
+\subsection{Φάση 2: Representation Learning}
+\begin{enumerate}
+    \item Παίρνουμε ένα σύνολο κινήσεων από τον replay buffer (batch).
+    \item Αρχικοποιούμε τις $T$ καταστάσεις του batch.
+    \item Πραγματοποιούμε ένα βήμα εκπαίδευσης $T$ φορές:
+    \begin{enumerate}
+        \item Παίρνουμε το frame και το κωδικοποιούμε ως $e_t$.
+        \item Το RSSM γνωρίζοντας την προηγούμενη κατάσταση, το προηγούμενο action και το τωρινό encoding παράγει την prior, posterior και το $[h, z] = s_t$.
+        \item Πραγματοποιούμε decode του παρόντος state $s_t$ και βρίσκουμε το σφάλμα του Decoder με βάση την πραγματική εικόνα $o_t$. Το σφάλμα υπολογίζεται με MSE.
+        \item Προβλέπουμε το reward του $s_t$ που προβλέψαμε $\hat{r}_t$ και το συγκρίνουμε με το αποθηκευμένο στον replay buffer reward $r_t$. Βρίσκουμε MSE.
+        \item Υπολογίζουμε $KL(\text{prior} \parallel \text{posterior})$ όπου KL = Kullback–Leibler divergence.
+    \end{enumerate}
+    \item Με βάση τα παραπάνω υπολογίζουμε το συνολικό σφάλμα ως εξής:
+    \[ \text{total\_loss} = \text{reconstruction\_loss} + \text{reward\_loss} + \beta \times \text{kl\_loss} \]
+    \item Πραγματοποιούμε back propagation και στη συνέχεια ενημερώνουμε τις παραμέτρους του μοντέλου $\theta$ (world\_params) χρησιμοποιώντας Adam optimizer. Έτσι τελειώνει το μέρος της εκπαίδευσης του μοντέλου.
+\end{enumerate}
+
+\subsection{Φάση 3: Χώρος Λανθάνουσας Φαντασίας - Εκπαίδευση Συμπεριφοράς}
+Στη συνέχεια μπαίνουμε στον λανθάνοντα χώρο. Παίρνουμε μία κίνηση από το ιστορικό (η οποία είχε παραχθεί από τον Actor) και το RSSM προσπαθεί να «ονειρευτεί» την επόμενη κατάσταση όπως στο 11β. Επαναλαμβάνουμε τα παρακάτω $T$ φορές:
+
+\begin{enumerate}
+    \item Όνειρο και εύρεση $[h_\tau, z_\tau]$ ($\tau$ συμβολίζει τον λανθάνον χρόνο).
+    \item Το Reward model προβλέπει το reward της επόμενης κατάστασης.
+    \item Αποθήκευση κατάστασης και reward $r_\tau$.
+    \item Ο Critic προβλέπει το reward μέχρι το τέλος του ορίζοντα ($H$ επαναλήψεις) για κάθε ένα από τα $T$ states που φανταστήκαμε (έχουν παραχθεί από τον Actor).
+    \item Υπολογίζουμε το $V_\lambda$ χρησιμοποιώντας τα $r_\tau$ και $v_\psi(s_\tau)$.
+    \item Υπολογίζουμε τα $v_\psi(s_\tau)$ ξανά με gradients.
+    \item Πραγματοποιούμε back propagation στο $\text{actor\_loss} = -V_\lambda.\text{mean}$.
+    \item Πραγματοποιούμε Adam optimization στον actor ενημερώνοντας την πολιτική του.
+    \item Κάνουμε detach στα imagined states, δηλαδή για $T \times H$ καταστάσεις παγώνοντας τις επιλογές που έγιναν αφού δεν θέλουμε να τις αλλάξουμε.
+    \item Συγκρίνουμε με τις τιμές $v_\psi$ με τα $V_\lambda$ που βρήκαμε στο 16 και βρίσκουμε το MSE.
+    \item Πραγματοποιούμε backpropagation στο σφάλμα MSE του κριτή.
+    \item Ενημερώνουμε τον τρόπο εκτίμησης επιβράβευσης του Critic χρησιμοποιώντας Adam optimizer.
+    \item Επαναλαμβάνουμε τις 3 παραπάνω φάσεις για κάθε βήμα εκπαίδευσης με σύνολο 23.000 βήματα (Η google έκανε 5.000.000).
+\end{enumerate}
+
+\paragraph{Σημασία του KL Divergence:} 
+Ο όρος $L_{KL}$ στη συνάρτηση κόστους εξυπηρετεί δύο σκοπούς:
+\begin{enumerate}
+    \item Λειτουργεί ως regularization, αποτρέποντας τον λανθάνοντα χώρο από το να γίνει 
+    ασυνεχής (κάτι που θα δυσκόλευε το "όνειρο").
+    \item Εξασφαλίζει ότι η posterior κατανομή $q(z_t | \cdot)$ παραμένει κοντά στην 
+    prior $p(z_t | \cdot)$, επιτρέποντας στο μοντέλο να γενικεύει σε νέες καταστάσεις.
+\end{enumerate}
+
+\paragraph{Ορισμός KL Divergence:}
+Η απόκλιση Kullback-Leibler ($D_{KL}$) είναι ένα μέτρο της διαφοράς μεταξύ δύο κατανομών πιθανότητας $P$ και $Q$. 
+Για συνεχείς τυχαίες μεταβλητές, ορίζεται ως το ολοκλήρωμα:
+
+\begin{equation}
+    D_{KL}(P \parallel Q) = \int_{-\infty}^{\infty} p(x) \log \left( \frac{p(x)}{q(x)} \right) \, dx
+\end{equation}
+
+Ουσιαστικά, εκφράζει την "πληροφοριακή απόσταση" που χάνεται αν χρησιμοποιήσουμε την κατανομή $Q$ για να προσεγγίσουμε την πραγματική κατανομή $P$.
+
+\paragraph{KL Divergence για Κανονικές Κατανομές:}
+Στον αλγόριθμο Dreamer, όπου οι κατανομές posterior $q(z|x)$ και prior $p(z)$ είναι πολυμεταβλητές Γκαουσιανές (Multivariate Gaussians), 
+η KL Divergence υπολογίζεται αναλυτικά ως:
+
+\begin{equation}
+    D_{KL}(q \parallel p) = \frac{1}{2} \left( \text{tr}(\Sigma_p^{-1} \Sigma_q) + (\mu_p - \mu_q)^\top \Sigma_p^{-1} (\mu_p - \mu_q) - k + \ln \left( \frac{\det \Sigma_p}{\det \Sigma_q} \right) \right)
+\end{equation}
+
+όπου $k$ είναι η διάσταση του λανθάνοντος χώρου, $\mu$ οι μέσες τιμές και $\Sigma$ οι πίνακες διακύμανσης.
+

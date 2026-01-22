@@ -1,0 +1,34 @@
+% ==============================
+% main.tex - Main Document File
+% ==============================
+\documentclass[12pt,a4paper]{article}
+
+% ==============================
+% LOAD PREAMBLE COMPONENTS
+% ==============================
+\input{preamble/packages}
+\input{preamble/fonts}
+\input{preamble/colors}
+\input{preamble/listings}
+\input{preamble/formatting}
+\input{preamble/commands}
+
+
+\begin{document}
+\include{chapters/title_page}
+
+\newpage
+\tableofcontents
+
+
+
+\include{chapters/abstract}
+\include{chapters/introduction}
+\include{chapters/components}
+\include{chapters/algorithm}
+\include{chapters/experiments}
+\include{chapters/results}
+\include{chapters/conclusions}
+\include{chapters/references}
+
+\end{document}

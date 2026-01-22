@@ -1,0 +1,21 @@
+\setdefaultlanguage{greek}
+\setotherlanguage{english}
+
+% Greek: Noto Sans (Standard on Fedora)
+% If this fails, install: sudo dnf install google-noto-sans-fonts
+\newfontfamily\greekfont[
+    Script=Greek,
+    Ligatures=TeX,
+    Numbers=Lining,
+    UprightFont=*,
+    BoldFont=* Bold,
+    ItalicFont=* Italic,
+    BoldItalicFont=* Bold Italic
+]{Noto Sans}
+
+\newfontfamily\englishfont{Noto Sans} % Latin: Noto Sans (Standard on Fedora)
+
+% Monospace: DejaVu Sans Mono (Standard on Fedora)
+\newfontfamily\greekfonttt[Script=Greek, Scale=0.85]{DejaVu Sans Mono}
+\newfontfamily\englishfonttt[Script=Latin, Scale=0.85]{DejaVu Sans Mono}
+\setmonofont[Scale=0.85]{DejaVu Sans Mono}
