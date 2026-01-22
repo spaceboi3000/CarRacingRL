@@ -7,6 +7,11 @@ Training consists of three interleaved processes:
 1. Environment Interaction: Collect experience using current policy
 2. Dynamics Learning: Train world model on collected experience  
 3. Behavior Learning: Train actor-critic by imagining in latent space
+
+Features:
+- Automatic checkpointing with crash recovery
+- Signal handling for graceful termination
+- Resume capability from interrupted training
 """
 
 import gymnasium as gym
@@ -18,6 +23,10 @@ import numpy as np
 import cv2
 import pandas as pd
 import os
+import signal
+import sys
+import atexit
+from datetime import datetime
 from replay import ReplayBuffer
 from dreamer import Dreamer
 
@@ -59,13 +68,179 @@ WORLD_MODEL_LR = 6e-4
 ACTOR_LR = 8e-5
 CRITIC_LR = 8e-5
 
-
-# Logging
+# Logging and Checkpointing
 LOG_INTERVAL = 10           # Log every N episodes
 SAVE_INTERVAL = 50000       # Save checkpoint every N steps
+AUTOSAVE_INTERVAL = 5000    # Autosave every N steps (for crash recovery)
+
+# Resume settings - set to checkpoint path to resume, or None to start fresh
+RESUME_PATH = None  # e.g., "dreamer_autosave.pth" or "dreamer_step50000.pth"
 
 # Device
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+# ==============================================================================
+# GLOBAL STATE FOR SIGNAL HANDLERS
+# ==============================================================================
+
+# These will be set in main() and used by signal handlers
+_global_agent = None
+_global_metrics_log = None
+_global_step = 0
+_global_episode = 0
+_save_dir = "checkpoints"
+
+
+# ==============================================================================
+# CHECKPOINT AND RECOVERY FUNCTIONS
+# ==============================================================================
+
+def ensure_save_dir():
+    """Create checkpoint directory if it doesn't exist."""
+    if not os.path.exists(_save_dir):
+        os.makedirs(_save_dir)
+        print(f"Created checkpoint directory: {_save_dir}")
+
+
+def save_checkpoint(agent, metrics_log, global_step, episode, filename_prefix="dreamer", 
+                    reason="checkpoint"):
+    """
+    Save model checkpoint and training log.
+    
+    Args:
+        agent: The Dreamer agent
+        metrics_log: Dictionary containing training metrics
+        global_step: Current training step
+        episode: Current episode number
+        filename_prefix: Prefix for saved files
+        reason: Why we're saving (for logging)
+    """
+    ensure_save_dir()
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Save model state
+    model_path = os.path.join(_save_dir, f"{filename_prefix}.pth")
+    checkpoint = {
+        'model_state_dict': agent.state_dict(),
+        'global_step': global_step,
+        'episode': episode,
+        'timestamp': timestamp,
+        'reason': reason
+    }
+    torch.save(checkpoint, model_path)
+    
+    # Save training log
+    log_path = os.path.join(_save_dir, f"{filename_prefix}_log.csv")
+    df = pd.DataFrame(metrics_log)
+    df.to_csv(log_path, index=False)
+    
+    print(f"[{reason.upper()}] Saved checkpoint at step {global_step}, episode {episode}")
+    print(f"  Model: {model_path}")
+    print(f"  Log: {log_path}")
+    
+    return model_path, log_path
+
+
+def load_checkpoint(agent, checkpoint_path):
+    """
+    Load model checkpoint and return training state.
+    
+    Args:
+        agent: The Dreamer agent to load weights into
+        checkpoint_path: Path to the checkpoint file
+        
+    Returns:
+        global_step, episode, metrics_log (or defaults if not found)
+    """
+    if not os.path.exists(checkpoint_path):
+        print(f"Checkpoint not found: {checkpoint_path}")
+        return 0, 0, None
+    
+    print(f"Loading checkpoint from: {checkpoint_path}")
+    checkpoint = torch.load(checkpoint_path, map_location=DEVICE)
+    
+    # Handle both old format (just state_dict) and new format (full checkpoint)
+    if 'model_state_dict' in checkpoint:
+        agent.load_state_dict(checkpoint['model_state_dict'])
+        global_step = checkpoint.get('global_step', 0)
+        episode = checkpoint.get('episode', 0)
+        print(f"  Loaded from step {global_step}, episode {episode}")
+        print(f"  Saved at: {checkpoint.get('timestamp', 'unknown')}")
+        print(f"  Reason: {checkpoint.get('reason', 'unknown')}")
+    else:
+        # Old format - just the state dict
+        agent.load_state_dict(checkpoint)
+        global_step = 0
+        episode = 0
+        print("  Loaded model weights (old checkpoint format)")
+    
+    # Try to load associated log file
+    log_path = checkpoint_path.replace('.pth', '_log.csv')
+    if not os.path.exists(log_path):
+        # Try alternative naming
+        log_path = checkpoint_path.replace('dreamer_', 'training_log_').replace('.pth', '.csv')
+    
+    metrics_log = None
+    if os.path.exists(log_path):
+        df = pd.read_csv(log_path)
+        metrics_log = df.to_dict(orient='list')
+        print(f"  Loaded training log: {log_path}")
+    
+    return global_step, episode, metrics_log
+
+
+def emergency_save():
+    """Emergency save function called on unexpected termination."""
+    global _global_agent, _global_metrics_log, _global_step, _global_episode
+    
+    if _global_agent is not None:
+        print("\n" + "="*60)
+        print("EMERGENCY SAVE - Saving current state...")
+        print("="*60)
+        try:
+            save_checkpoint(
+                _global_agent, 
+                _global_metrics_log, 
+                _global_step, 
+                _global_episode,
+                filename_prefix="dreamer_emergency",
+                reason="emergency"
+            )
+        except Exception as e:
+            print(f"Emergency save failed: {e}")
+
+
+def signal_handler(signum, frame):
+    """Handle termination signals gracefully."""
+    signal_names = {
+        signal.SIGTERM: "SIGTERM",
+        signal.SIGINT: "SIGINT (Ctrl+C)",
+    }
+    if hasattr(signal, 'SIGHUP'):
+        signal_names[signal.SIGHUP] = "SIGHUP"
+    
+    sig_name = signal_names.get(signum, f"Signal {signum}")
+    print(f"\n\nReceived {sig_name}. Saving and exiting gracefully...")
+    
+    emergency_save()
+    sys.exit(0)
+
+
+def setup_signal_handlers():
+    """Set up signal handlers for graceful termination."""
+    signal.signal(signal.SIGTERM, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+    
+    # SIGHUP is Unix-only
+    if hasattr(signal, 'SIGHUP'):
+        signal.signal(signal.SIGHUP, signal_handler)
+    
+    # Register emergency save on exit
+    atexit.register(emergency_save)
+    
+    print("Signal handlers configured for graceful termination")
 
 
 # ==============================================================================
@@ -73,6 +248,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ==============================================================================
 
 def preprocess(obs):
+    """Preprocess observation: resize to 64x64, grayscale, normalize."""
     # Resize to 64x64
     img = cv2.resize(obs, (64, 64))
     # Convert to grayscale
@@ -83,8 +259,7 @@ def preprocess(obs):
 
 def compute_lambda_returns(rewards, values, gamma=GAMMA, lambda_=LAMBDA):
     """
-    Compute V_λ 
-
+    Compute V_λ targets for actor-critic training.
     """
     H = len(rewards)
     
@@ -103,6 +278,7 @@ def compute_lambda_returns(rewards, values, gamma=GAMMA, lambda_=LAMBDA):
 
 
 def process_action_for_env(action):
+    """Process network output action for environment."""
     processed = action.copy()
     # Steering stays in [-1, 1] (already there from tanh)
     # Gas: map from [-1, 1] to [0, 1]
@@ -112,13 +288,12 @@ def process_action_for_env(action):
     return processed
 
 
-
 # ==============================================================================
 # TRAINING FUNCTIONS
 # ==============================================================================
 
 def train_world_model(agent, obs_batch, action_batch, reward_batch):
-    
+    """Train the world model (encoder, decoder, RSSM, reward model)."""
     B, T = obs_batch.shape[:2]
     
     # Initialize RSSM states
@@ -191,8 +366,9 @@ def train_world_model(agent, obs_batch, action_batch, reward_batch):
 
 
 def train_actor_critic(agent, obs_batch, action_batch):
-
+    """Train actor and critic using imagination in latent space."""
     B, T = obs_batch.shape[:2]
+    
     with torch.no_grad():
         h, z = agent.get_initial_state(B)
         
@@ -215,7 +391,7 @@ def train_actor_critic(agent, obs_batch, action_batch):
     imagined_states = [start_states]  # Include starting states
     imagined_rewards = []
     
-    for _ in range(HORIZON): #dream steps
+    for _ in range(HORIZON):  # dream steps
         # Current state
         state = agent.get_state_feature(dream_h, dream_z)
         
@@ -237,8 +413,6 @@ def train_actor_critic(agent, obs_batch, action_batch):
         imagined_rewards.append(reward)
     
     # Stack tensors
-    # states: (H+1, T*B, state_dim) - H imagined + 1 starting state
-    # rewards: (H, T*B, 1)
     imagined_states = torch.stack(imagined_states, dim=0)  # (H+1, T*B, state_dim)
     imagined_rewards = torch.stack(imagined_rewards, dim=0)  # (H, T*B, 1)
     
@@ -248,9 +422,9 @@ def train_actor_critic(agent, obs_batch, action_batch):
         imagined_values = imagined_values.reshape(HORIZON + 1, -1, 1)  # (H+1, T*B, 1)
     
     # Compute V_λ targets using detached values
-    lambda_targets = compute_lambda_returns(imagined_rewards, imagined_values, GAMMA, LAMBDA)  # (H, T*B, 1)
+    lambda_targets = compute_lambda_returns(imagined_rewards, imagined_values, GAMMA, LAMBDA)
 
-    # without gradients
+    # Actor loss
     actor_states = imagined_states[:-1]  # (H, T*B, state_dim) - exclude bootstrap state
     
     # Recompute values with gradients through the critic
@@ -265,10 +439,7 @@ def train_actor_critic(agent, obs_batch, action_batch):
     nn.utils.clip_grad_norm_(agent.actor.parameters(), GRAD_CLIP)
     agent.actor_opt.step()
     
-  
-    # Critic minimize MSE between v(s) and V_λ(s)
-    # Use detached states and targets = no gradients through world model
-    
+    # Critic loss
     critic_states = imagined_states[:-1].detach()  # (H, T*B, state_dim)
     critic_targets = lambda_targets.detach()  # (H, T*B, 1)
     
@@ -292,10 +463,17 @@ def train_actor_critic(agent, obs_batch, action_batch):
 # ==============================================================================
 
 def main():
-    print(f"=" * 60)
+    global _global_agent, _global_metrics_log, _global_step, _global_episode
+    
+    print("=" * 60)
     print(f"Dreamer Training on {ENV_NAME}")
     print(f"Device: {DEVICE}")
-    print(f"=" * 60)
+    print(f"Checkpoint directory: {_save_dir}")
+    print("=" * 60)
+    
+    # Set up signal handlers for graceful termination
+    setup_signal_handlers()
+    ensure_save_dir()
     
     # Initialize environment
     env = gym.make(ENV_NAME, render_mode="rgb_array")
@@ -314,7 +492,7 @@ def main():
     # Initialize replay buffer
     buffer = ReplayBuffer(capacity=100000, obs_shape=(64, 64), action_dim=action_dim)
     
-    # Metrics logging
+    # Initialize metrics logging
     metrics_log = {
         'step': [],
         'episode': [],
@@ -324,44 +502,71 @@ def main():
         'critic_loss': []
     }
     
+    # Initialize training state
+    global_step = 0
+    episode = 0
+    
+    # ==== Resume from checkpoint if specified ====
+    if RESUME_PATH is not None:
+        checkpoint_path = RESUME_PATH
+        if not os.path.isabs(checkpoint_path) and not os.path.exists(checkpoint_path):
+            checkpoint_path = os.path.join(_save_dir, RESUME_PATH)
+        
+        if os.path.exists(checkpoint_path):
+            global_step, episode, loaded_metrics = load_checkpoint(agent, checkpoint_path)
+            if loaded_metrics is not None:
+                metrics_log = loaded_metrics
+            print(f"Resuming training from step {global_step}, episode {episode}")
+        else:
+            print(f"Resume checkpoint not found: {checkpoint_path}")
+            print("Starting fresh training...")
+    
+    # Set global references for signal handlers
+    _global_agent = agent
+    _global_metrics_log = metrics_log
+    _global_step = global_step
+    _global_episode = episode
+    
     # Track best reward for checkpointing
     best_avg_reward = -float('inf')
     recent_rewards = []
     
     # ==== Phase 1: Seed buffer with random episodes ====
-    print(f"\nSeeding buffer with {SEED_EPISODES} random episodes...")
-    
-    for ep in range(SEED_EPISODES):
-        obs, _ = env.reset()
-        done = False
-        ep_reward = 0
+    if global_step == 0:  # Only seed if starting fresh
+        print(f"\nSeeding buffer with {SEED_EPISODES} random episodes...")
         
-        while not done:
-            action = env.action_space.sample()
-            obs_processed = preprocess(obs)
+        for ep in range(SEED_EPISODES):
+            obs, _ = env.reset()
+            done = False
+            ep_reward = 0
             
-            # Action repeat
-            total_reward = 0
-            for _ in range(ACTION_REPEAT):
-                next_obs, reward, terminated, truncated, _ = env.step(action)
-                total_reward += reward
-                if terminated or truncated:
-                    done = True
-                    break
+            while not done:
+                action = env.action_space.sample()
+                obs_processed = preprocess(obs)
+                
+                # Action repeat
+                total_reward = 0
+                for _ in range(ACTION_REPEAT):
+                    next_obs, reward, terminated, truncated, _ = env.step(action)
+                    total_reward += reward
+                    if terminated or truncated:
+                        done = True
+                        break
+                
+                buffer.add(obs_processed, action, total_reward, done)
+                obs = next_obs
+                ep_reward += total_reward
             
-            buffer.add(obs_processed, action, total_reward, done)
-            obs = next_obs
-            ep_reward += total_reward
+            print(f"  Seed episode {ep+1}: reward = {ep_reward:.2f}")
         
-        print(f"  Seed episode {ep+1}: reward = {ep_reward:.2f}")
-    
-    print(f"Buffer size: {len(buffer)}")
+        print(f"Buffer size: {len(buffer)}")
+    else:
+        print(f"\nSkipping buffer seeding (resuming from step {global_step})")
+        print("Note: Buffer state is not saved/restored - collecting new experience...")
     
     # ==== Phase 2: Main training loop ====
     print(f"\nStarting main training loop...")
     
-    global_step = 0
-    episode = 0
     episode_reward = 0
     
     # Reset environment
@@ -375,6 +580,7 @@ def main():
     recent_model_loss = 0
     recent_actor_loss = 0
     recent_critic_loss = 0
+    
     try:
         while global_step < TOTAL_ENV_STEPS:
             # ==== Collect experience ====
@@ -414,9 +620,22 @@ def main():
                 global_step += 1
                 episode_reward += total_reward
                 
+                # Update global state for signal handlers
+                _global_step = global_step
+                
+                # ==== Autosave checkpoint ====
+                if global_step % AUTOSAVE_INTERVAL == 0:
+                    save_checkpoint(
+                        agent, metrics_log, global_step, episode,
+                        filename_prefix="dreamer_autosave",
+                        reason="autosave"
+                    )
+                
                 # Episode ended
                 if done:
                     episode += 1
+                    _global_episode = episode
+                    
                     recent_rewards.append(episode_reward)
                     if len(recent_rewards) > 100:
                         recent_rewards.pop(0)
@@ -425,7 +644,7 @@ def main():
                     
                     # Log every episode
                     print(f"Step {global_step:7d} | Episode {episode:4d} | "
-                        f"Reward: {episode_reward:7.2f} | Avg(10): {avg_reward:7.2f}")
+                          f"Reward: {episode_reward:7.2f} | Avg(10): {avg_reward:7.2f}")
                     
                     # Log metrics
                     metrics_log['step'].append(global_step)
@@ -435,11 +654,17 @@ def main():
                     metrics_log['actor_loss'].append(recent_actor_loss)
                     metrics_log['critic_loss'].append(recent_critic_loss)
                     
+                    # Update global metrics for signal handlers
+                    _global_metrics_log = metrics_log
+                    
                     # Save best model
                     if len(recent_rewards) >= 10 and avg_reward > best_avg_reward:
                         best_avg_reward = avg_reward
-                        torch.save(agent.state_dict(), "dreamer_best.pth")
-                        print(f"  --> New best average: {best_avg_reward:.2f}, saved to dreamer_best.pth")
+                        save_checkpoint(
+                            agent, metrics_log, global_step, episode,
+                            filename_prefix="dreamer_best",
+                            reason="best_reward"
+                        )
                     
                     # Reset for new episode
                     obs, _ = env.reset()
@@ -482,33 +707,61 @@ def main():
             agent.eval()
             
             print(f"  Training @ step {global_step}: "
-                f"model={recent_model_loss:.4f}, "
-                f"actor={recent_actor_loss:.4f}, "
-                f"critic={recent_critic_loss:.4f}")
+                  f"model={recent_model_loss:.4f}, "
+                  f"actor={recent_actor_loss:.4f}, "
+                  f"critic={recent_critic_loss:.4f}")
             
             # Periodic checkpoint save
             if global_step % SAVE_INTERVAL == 0:
-                checkpoint_path = f"dreamer_step{global_step}.pth"
-                torch.save(agent.state_dict(), checkpoint_path)
-                df = pd.DataFrame(metrics_log)
-                df.to_csv(f"training_log_step{global_step}.csv", index=False)
-                print(f"  --> Checkpoint saved: {checkpoint_path}")
+                save_checkpoint(
+                    agent, metrics_log, global_step, episode,
+                    filename_prefix=f"dreamer_step{global_step}",
+                    reason="periodic"
+                )
+                
     except KeyboardInterrupt:
-        print("\nCaptured Ctrl+C. Stopping training and saving results")
+        print("\n" + "="*60)
+        print("Training interrupted by user (Ctrl+C)")
+        print("="*60)
+        save_checkpoint(
+            agent, metrics_log, global_step, episode,
+            filename_prefix="dreamer_interrupted",
+            reason="user_interrupt"
+        )
     
-    # ==== Save results ====
+    except Exception as e:
+        print("\n" + "="*60)
+        print(f"Training crashed with error: {e}")
+        print("="*60)
+        save_checkpoint(
+            agent, metrics_log, global_step, episode,
+            filename_prefix="dreamer_crash",
+            reason=f"crash_{type(e).__name__}"
+        )
+        raise  # Re-raise the exception after saving
+    
+    # ==== Training completed successfully ====
     print(f"\n{'='*60}")
     print("Training complete!")
     print(f"{'='*60}")
     
-    # Save metrics
+    # Final save
+    save_checkpoint(
+        agent, metrics_log, global_step, episode,
+        filename_prefix="dreamer_final",
+        reason="training_complete"
+    )
+    
+    # Also save to root directory for compatibility
+    torch.save(agent.state_dict(), "dreamer.pth")
     df = pd.DataFrame(metrics_log)
     df.to_csv("training_log.csv", index=False)
-    print("Saved training log to 'training_log.csv'")
+    print("\nAlso saved to root directory:")
+    print("  Model: dreamer.pth")
+    print("  Log: training_log.csv")
     
-    # Save model
-    torch.save(agent.state_dict(), "dreamer.pth")
-    print("Saved model to 'dreamer.pth'")
+    # Clear emergency save flag
+    _global_agent = None
     
     env.close()
 
