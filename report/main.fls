@@ -621,6 +621,12 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
+INPUT ./figures/training_overview.png
+INPUT ./figures/training_overview.png
+INPUT ./figures/training_overview.png
+INPUT ./figures/training_overview2.png
+INPUT ./figures/training_overview2.png
+INPUT ./figures/training_overview2.png
 INPUT ./figures/run1.png
 INPUT ./figures/run1.png
 INPUT ./figures/run1.png
@@ -648,9 +654,6 @@ INPUT ./figures/Dreamsfull1.png
 OUTPUT chapters/conclusions.aux
 INPUT ./chapters/conclusions.tex
 INPUT ./chapters/conclusions.tex
-INPUT ./figures/training_overview.png
-INPUT ./figures/training_overview.png
-INPUT ./figures/training_overview.png
 OUTPUT chapters/references.aux
 INPUT ./chapters/references.tex
 INPUT ./chapters/references.tex

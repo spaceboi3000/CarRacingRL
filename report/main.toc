@@ -7,14 +7,15 @@
 \contentsline {section}{\numberline {3}Components}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Variational Autoencoder (VAE)}{5}{subsection.3.1}%
 \contentsline {subsubsection}{\numberline {3.1.1}Encoder: $p(s_t \mid s_{t-1}, a_{t-1}, o_t)$}{5}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Decoder: $p(\hat {o}_t \mid s_t)$}{6}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2}Decoder: $p(o_t \mid s_t)$}{6}{subsubsection.3.1.2}%
 \contentsline {subsubsection}{\numberline {3.1.3}Επιλογή Ασπρόμαυρης Επεξεργασίας}{9}{subsubsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.2}Recurrent State Space Model (RSSM)}{9}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Reward Model}{10}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Actor}{10}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Reparameterization Trick}{11}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.1}Actor Structure}{10}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Reparameterization Trick}{11}{subsubsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.5}Critic}{11}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Value Estimation $(V_\lambda )$}{11}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.6}Value Estimation $(V_\lambda )$}{12}{subsection.3.6}%
 \contentsline {section}{\numberline {4}Αλγόριθμος}{13}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Αρχικοποίηση}{13}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Φάση 1: Συλλογή δεδομένων}{14}{subsection.4.2}%
@@ -26,7 +27,6 @@
 \contentsline {section}{\numberline {5}Αποτελέσματα}{17}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Standard Ρύθμιση}{17}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Σύνοψη Εκπαίδευσης}{17}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Σύγκριση Επιδόσεων (Performance Comparison)}{18}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Οπτική Παρατήρηση}{18}{subsection.5.4}%
-\contentsline {section}{\numberline {6}Συμπεράσματα}{23}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Επιτεύγματα}{23}{subsection.6.1}%
+\contentsline {subsection}{\numberline {5.3}Σύγκριση Επιδόσεων (Performance Comparison)}{19}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Οπτική Παρατήρηση σε διάφορα στάδια εκπαίδευσης}{20}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Συμπεράσματα}{25}{section.6}%

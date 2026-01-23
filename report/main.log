@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2026.1.22)  22 JAN 2026 23:34
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2026.1.22)  23 JAN 2026 15:26
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/home/nick/Uni/CarRacingRL/report/main.tex
@@ -867,23 +867,23 @@ braces):
 >  {greek/Localnumeral}  =>  {Greeknumerals}
 >  {greek/DefineCommandsCmd}  =>  {xpg_define_language_commands:e}.
 Module polyglossia Info: Language data for greek
+(polyglossia)            lefthyphenmin	1
 (polyglossia)            hyphenation	
 (polyglossia)            patterns	hyph-el-polyton.pat.txt
-(polyglossia)            righthyphenmin	1
-(polyglossia)            loader	loadhyph-el-polyton.tex
 (polyglossia)            synonyms	polygreek
-(polyglossia)            lefthyphenmin	1 on input line 16
+(polyglossia)            loader	loadhyph-el-polyton.tex
+(polyglossia)            righthyphenmin	1 on input line 16
 
 Module polyglossia Warning: Hyphenation file hyph-el-polyton.pat.txt not found on input line 16
 Module polyglossia Info: Language greek was not yet loaded; created with id 2 on input line 16
 (/usr/share/texlive/texmf-dist/tex/latex/polyglossia/xgreek-fixes.def)
 Module polyglossia Info: Language data for monogreek
+(polyglossia)            lefthyphenmin	1
 (polyglossia)            hyphenation	
 (polyglossia)            patterns	hyph-el-monoton.pat.txt
-(polyglossia)            righthyphenmin	1
-(polyglossia)            loader	loadhyph-el-monoton.tex
 (polyglossia)            synonyms	
-(polyglossia)            lefthyphenmin	1 on input line 99
+(polyglossia)            loader	loadhyph-el-monoton.tex
+(polyglossia)            righthyphenmin	1 on input line 99
 
 Module polyglossia Warning: Hyphenation file hyph-el-monoton.pat.txt not found on input line 99
 Module polyglossia Info: Language monogreek was not yet loaded; created with id 3 on input line 99
@@ -1089,7 +1089,11 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 Package hyperref Info: Option `colorlinks' set `true' on input line 29.
 \c@example=\count364
 \c@note=\count365
-) (./preamble/commands.tex) (./main.aux (./chapters/title_page.aux) (./chapters/abstract.aux) (./chapters/introduction.aux) (./chapters/components.aux) (./chapters/algorithm.aux) (./chapters/experiments.aux) (./chapters/results.aux) (./chapters/conclusions.aux) (./chapters/references.aux))
+) (./preamble/commands.tex) (./main.aux (./chapters/title_page.aux) (./chapters/abstract.aux) (./chapters/introduction.aux) (./chapters/components.aux) (./chapters/algorithm.aux) (./chapters/experiments.aux) (./chapters/results.aux
+
+LaTeX Warning: Label `fig:conclusion_overview' multiply defined.
+
+) (./chapters/conclusions.aux) (./chapters/references.aux))
 \openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -1520,6 +1524,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 60.
 
+
+Overfull \hbox (0.86803pt too wide) in paragraph at lines 61--63
+\TU/NotoSans(0)/m/n/12 εικόνα $[]$. Μας είναι χρήσιμος καθώς μας επιτρέπει να απεικονίσουμε την φαντασία
+ []
+
 [6]
 <figures/VAE_analytic.png, id=237, 325.96782pt x 527.72156pt>
 File: figures/VAE_analytic.png Graphic file (type png)
@@ -1567,13 +1576,13 @@ Overfull \hbox (16.06487pt too wide) in paragraph at lines 128--131
  []
 
 
-Overfull \hbox (23.21103pt too wide) in paragraph at lines 143--147
-\OML/cmm/m/it/12 s[]; a[]\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 . Πηγαίνει στην λανθάνουσα κατάσταση $\OML/cmm/m/it/12 h[] \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 h[]; []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z[]; a[]\OT1/cmr/m/n/12 ))$
+Overfull \hbox (11.98885pt too wide) in paragraph at lines 143--147
+[]\TU/NotoSans(0)/m/n/12 Η λειτουργία \TU/NotoSans(0)/b/n/12 Transition \TU/NotoSans(0)/m/n/12 του RSSM πραγματοποιεί την μετάβαση $\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 s[]; a[]\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 .
  []
 
 
-Overfull \hbox (2.8479pt too wide) in paragraph at lines 143--147
-\TU/NotoSans(0)/m/n/12 της επόμενης κατάστασης με βάση την παρούσα δηλαδή την prior πιθανότητα
+Overfull \hbox (20.21487pt too wide) in paragraph at lines 147--148
+[]\TU/NotoSans(0)/m/n/12 Η λειτουργία \TU/NotoSans(0)/b/n/12 Observe \TU/NotoSans(0)/m/n/12 πραγματοποιεί τον υπολογισμό $\OML/cmm/m/it/12 p\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 s[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 s[]; a[]; o[]\OT1/cmr/m/n/12 )$\TU/NotoSans(0)/m/n/12 . Δηλαδή,
  []
 
 
@@ -1592,22 +1601,22 @@ Overfull \hbox (28.75398pt too wide) in paragraph at lines 173--174
  []
 
 [10]
-Overfull \hbox (64.47905pt too wide) in paragraph at lines 193--196
+Overfull \hbox (64.47905pt too wide) in paragraph at lines 194--197
 \TU/NotoSans(0)/m/n/12 δυνατότητα υπολογισμού παραγώγων μέσω στοχαστικών κόμβων. Κανονικά, η δειγματοληψία
  []
 
 
-Overfull \hbox (59.01305pt too wide) in paragraph at lines 193--196
+Overfull \hbox (59.01305pt too wide) in paragraph at lines 194--197
 \OML/cmm/m/it/12 z \OMS/cmsy/m/n/12  N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 )$ \TU/NotoSans(0)/m/n/12 δεν είναι παραγωγίσιμη πράξη. Ο Dreamer χρησιμοποιεί το \TU/NotoSans(0)/b/n/12 Reparameterization
  []
 
 
-Overfull \hbox (19.01518pt too wide) in paragraph at lines 198--201
+Overfull \hbox (19.01518pt too wide) in paragraph at lines 199--202
 \TU/NotoSans(0)/m/n/12 Αυτό επιτρέπει στα gradients να περάσουν ανεμπόδιστα προς τα $\OML/cmm/m/it/12 $ \TU/NotoSans(0)/m/n/12 και $\OML/cmm/m/it/12 $\TU/NotoSans(0)/m/n/12 , επιτρέποντας
  []
 
 
-Overfull \hbox (4.41287pt too wide) in paragraph at lines 218--223
+Overfull \hbox (4.41287pt too wide) in paragraph at lines 219--224
 []\TU/NotoSans(0)/m/n/12 Για να εξισορροπηθεί η μεροληψία (bias) και η διακύμανση (variance), ο Dreamer
  []
 
@@ -1712,133 +1721,168 @@ No file chapters/experiments.tex.
 
 
 ]
-Overfull \hbox (26.30487pt too wide) in paragraph at lines 108--110
-\TU/NotoSans(0)/m/n/12 να πλοηγείται στην πίστα, παραμένοντας εντός δρόμου και διατηρώντας ικανοποιητική
+<figures/training_overview.png, id=398, 859.0494pt x 591.1686pt>
+File: figures/training_overview.png Graphic file (type png)
+<use figures/training_overview.png>
+Package luatex.def Info: figures/training_overview.png  used on input line 73.
+(luatex.def)             Requested size: 409.71692pt x 281.9536pt.
+
+Overfull \hbox (27.53802pt too wide) in paragraph at lines 78--83
+\TU/NotoSans(0)/m/n/12 εκπαίδευσης του actor όπου χρησιμοποιήσαμε detached actor states. Με την διόρθωση
  []
 
-<figures/run1.png, id=398, 745.28438pt x 595.47469pt>
+[18<./figures/training_overview.png>]
+Overfull \hbox (10.67686pt too wide) in paragraph at lines 120--126
+\TU/NotoSans(0)/m/n/12 πλοηγείται στην πίστα, παραμένοντας εντός δρόμου και διατηρώντας ικανοποιητική
+ []
+
+
+Overfull \hbox (3.87103pt too wide) in paragraph at lines 120--126
+\TU/NotoSans(0)/m/n/12 επεισόδιο, πιθανώς λόγω διαφορετικών διαδρομών και συνθηκών στην πίστα. Αυτό
+ []
+
+
+Overfull \hbox (2.82484pt too wide) in paragraph at lines 120--126
+\TU/NotoSans(0)/m/n/12 είναι αναμενόμενο όταν η εκπαίδευση τερματίζεται μετά από λίγα επεισόδια, καθώς
+ []
+
+<figures/training_overview2.png, id=405, 859.0494pt x 591.1686pt>
+File: figures/training_overview2.png Graphic file (type png)
+<use figures/training_overview2.png>
+Package luatex.def Info: figures/training_overview2.png  used on input line 133.
+(luatex.def)             Requested size: 409.71692pt x 281.9536pt.
+[19]
+Overfull \hbox (16.25583pt too wide) in paragraph at lines 138--141
+[]\TU/NotoSans(0)/m/n/12 Γενικά δεν βλέπουμε σταθερή μείωση στα losses αφού στα στάδια της εξερεύνησης
+ []
+
+
+Overfull \hbox (17.68376pt too wide) in paragraph at lines 138--141
+\TU/NotoSans(0)/m/n/12 ο πράκτορας δοκιμάζει νέες ενέργειες που μπορεί να αυξήσουν το σφάλμα προσωρινά.
+ []
+
+
+Overfull \hbox (11.91002pt too wide) in paragraph at lines 138--141
+\TU/NotoSans(0)/m/n/12 Αν δούμε την πραγματική τιμή παρατηρούμε πιο απότομες διακυμάνσεις. Προφανώς
+ []
+
+
+Overfull \hbox (8.37584pt too wide) in paragraph at lines 138--141
+\TU/NotoSans(0)/m/n/12 με τόσα λίγα βήματα εκπαίδευσης η δειγματοληψία ανά 500 βήματα δεν είναι αρκετή
+ []
+
+<figures/run1.png, id=412, 745.28438pt x 595.47469pt>
 File: figures/run1.png Graphic file (type png)
 <use figures/run1.png>
-Package luatex.def Info: figures/run1.png  used on input line 119.
+Package luatex.def Info: figures/run1.png  used on input line 151.
 (luatex.def)             Requested size: 182.09486pt x 145.48824pt.
-<figures/run2.png, id=399, 307.90031pt x 362.10281pt>
+<figures/run2.png, id=413, 307.90031pt x 362.10281pt>
 File: figures/run2.png Graphic file (type png)
 <use figures/run2.png>
-Package luatex.def Info: figures/run2.png  used on input line 125.
+Package luatex.def Info: figures/run2.png  used on input line 157.
 (luatex.def)             Requested size: 136.57462pt x 160.61862pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (23.44307pt too wide) in paragraph at lines 130--133
+Overfull \hbox (23.44307pt too wide) in paragraph at lines 162--165
 \TU/NotoSans(0)/m/n/12 πορεία, δεν καταλαβαίνει καν τι χρειάζεται να κάνει. Αυτό είναι λογικό και αναμενόμενο
  []
 
 
-Overfull \hbox (0.40376pt too wide) in paragraph at lines 130--133
+Overfull \hbox (0.40376pt too wide) in paragraph at lines 162--165
 \TU/NotoSans(0)/m/n/12 αφού η μέθοδος του Dreamer απαιτεί πολλές ώρες εκπαίδευσης και μεγάλο αριθμό
  []
 
-[18]
-<figures/Dreams1.png, id=406, 1196.21906pt x 620.3175pt>
+<figures/Dreams1.png, id=414, 1196.21906pt x 620.3175pt>
 File: figures/Dreams1.png Graphic file (type png)
 <use figures/Dreams1.png>
-Package luatex.def Info: figures/Dreams1.png  used on input line 140.
+Package luatex.def Info: figures/Dreams1.png  used on input line 172.
 (luatex.def)             Requested size: 364.19667pt x 188.86055pt.
-<figures/Dreams2.png, id=407, 1161.58969pt x 548.0475pt>
+<figures/Dreams2.png, id=415, 1161.58969pt x 548.0475pt>
 File: figures/Dreams2.png Graphic file (type png)
 <use figures/Dreams2.png>
-Package luatex.def Info: figures/Dreams2.png  used on input line 149.
+Package luatex.def Info: figures/Dreams2.png  used on input line 181.
 (luatex.def)             Requested size: 364.19667pt x 171.83307pt.
 
-Overfull \hbox (10.0478pt too wide) in paragraph at lines 134--155
+Overfull \hbox (10.0478pt too wide) in paragraph at lines 166--187
 []\TU/NotoSans(0)/m/n/12 Παρακάτω βλέπουμε πώς απεικονίζονται τα όνειρα κατά την διάρκεια του testing. 
  []
 
-[19<./figures/run1.png><./figures/run2.png>]
-<figures/Dreamsonly1.png, id=415, 1183.42125pt x 228.855pt>
+[20<./figures/training_overview2.png>] [21<./figures/run1.png><./figures/run2.png>]
+<figures/Dreamsonly1.png, id=430, 1183.42125pt x 228.855pt>
 File: figures/Dreamsonly1.png Graphic file (type png)
 <use figures/Dreamsonly1.png>
-Package luatex.def Info: figures/Dreamsonly1.png  used on input line 165.
+Package luatex.def Info: figures/Dreamsonly1.png  used on input line 197.
 (luatex.def)             Requested size: 364.19667pt x 70.42749pt.
-<figures/Dreamsonly2.png, id=416, 1167.61218pt x 250.68657pt>
+<figures/Dreamsonly2.png, id=431, 1167.61218pt x 250.68657pt>
 File: figures/Dreamsonly2.png Graphic file (type png)
 <use figures/Dreamsonly2.png>
-Package luatex.def Info: figures/Dreamsonly2.png  used on input line 174.
+Package luatex.def Info: figures/Dreamsonly2.png  used on input line 206.
 (luatex.def)             Requested size: 364.19667pt x 78.194pt.
- [20<./figures/Dreams1.png><./figures/Dreams2.png>]
-<figures/Dreams5.png, id=425, 1168.365pt x 590.205pt>
+ [22<./figures/Dreams1.png><./figures/Dreams2.png>]
+<figures/Dreams5.png, id=439, 1168.365pt x 590.205pt>
 File: figures/Dreams5.png Graphic file (type png)
 <use figures/Dreams5.png>
-Package luatex.def Info: figures/Dreams5.png  used on input line 187.
+Package luatex.def Info: figures/Dreams5.png  used on input line 219.
 (luatex.def)             Requested size: 455.24411pt x 229.97188pt.
 
-Overfull \hbox (46.75504pt too wide) in paragraph at lines 182--189
+Overfull \hbox (46.75504pt too wide) in paragraph at lines 214--221
 \TU/NotoSans(0)/m/n/12 καλύτερα αλλά κάποιες φορές πάει να βγει εκτός πορείας. Τέλος, παρακάτω παρουσιάζουμε
  []
 
-<figures/Dreamsfull1.png, id=426, 1187.93813pt x 565.36218pt>
+<figures/Dreamsfull1.png, id=440, 1187.93813pt x 565.36218pt>
 File: figures/Dreamsfull1.png Graphic file (type png)
 <use figures/Dreamsfull1.png>
-Package luatex.def Info: figures/Dreamsfull1.png  used on input line 194.
+Package luatex.def Info: figures/Dreamsfull1.png  used on input line 226.
 (luatex.def)             Requested size: 455.24411pt x 216.6601pt.
-[21<./figures/Dreamsonly1.png><./figures/Dreamsonly2.png><./figures/Dreams5.png>]
-Overfull \hbox (6.81184pt too wide) in paragraph at lines 197--200
+[23<./figures/Dreamsonly1.png><./figures/Dreamsonly2.png><./figures/Dreams5.png>]
+Overfull \hbox (6.81184pt too wide) in paragraph at lines 229--232
 []\TU/NotoSans(0)/m/n/12 Παρατηρούμε ότι τα όνειρα διατηρούν βασικά χαρακτηριστικά της πραγματικής
  []
 
 
-Overfull \hbox (29.2419pt too wide) in paragraph at lines 197--200
+Overfull \hbox (29.2419pt too wide) in paragraph at lines 229--232
 \TU/NotoSans(0)/m/n/12 εικόνας, όπως η θέση του δρόμου και του αυτοκινήτου, αλλά ταυτόχρονα παρουσιάζουν
  []
 
 
-Overfull \hbox (3.6689pt too wide) in paragraph at lines 197--200
+Overfull \hbox (3.6689pt too wide) in paragraph at lines 229--232
 \TU/NotoSans(0)/m/n/12 κατάσταση βασισμένο στην τρέχουσα, χωρίς να έχει απόλυτη βεβαιότητα/ακριβεια. 
  []
 
 
-Overfull \hbox (14.52283pt too wide) in paragraph at lines 201--203
+Overfull \hbox (14.52283pt too wide) in paragraph at lines 233--235
 \TU/NotoSans(0)/m/n/12 ότι το VAE κατάφερε να μάθει μια αποτελεσματική αναπαράσταση του περιβάλλοντος
  []
 
-) [22<./figures/Dreamsfull1.png>]
+) [24<./figures/Dreamsfull1.png>]
 \openout2 = chapters/conclusions.aux
  (./chapters/conclusions.tex
-Overfull \hbox (4.62955pt too wide) in paragraph at lines 3--4
-\TU/NotoSans(0)/m/n/12 την αρχή και τον εφαρμόσαμε στο περιβάλλον \TU/DejaVuSansMono(0)/m/n/12 CarRacing-V3 \TU/NotoSans(0)/m/n/12 του Gymnasium. Μέσω
+Overfull \hbox (4.95987pt too wide) in paragraph at lines 3--7
+\TU/NotoSans(0)/m/n/12 απόδοση του Google Dreamer V1 ανέδειξε τη σημαντική υπεροχή των Model-Based
  []
 
 
-Overfull \hbox (5.81691pt too wide) in paragraph at lines 3--4
-\TU/NotoSans(0)/m/n/12 της ανάλυσης της εκπαιδευτικής διαδικασίας και των αποτελεσμάτων, καταλήγουμε
+Overfull \hbox (30.79984pt too wide) in paragraph at lines 8--17
+\TU/NotoSans(0)/m/n/12 την εκπαίδευση και μειώνει την ανάγκη για εκτεταμένη αλληλεπίδραση με το περιβάλλον.
  []
 
 
-Overfull \hbox (21.55899pt too wide) in paragraph at lines 8--10
-[]\TU/NotoSans(0)/b/n/12 Εκμάθηση Δυναμικής: \TU/NotoSans(0)/m/n/12 Το world model κατάφερε επιτυχώς να μάθει τη δυναμική
+Overfull \hbox (5.67291pt too wide) in paragraph at lines 8--17
+\TU/NotoSans(0)/m/n/12 απαραίτητη για την επιτυχή εκπαίδευση του Actor, καθώς χωρίς αυτήν ο πράκτορας
  []
 
 
-Overfull \hbox (19.40094pt too wide) in paragraph at lines 10--12
-\TU/NotoSans(0)/m/n/12 πράκτορα «στη φαντασία» (λανθάνοντα χώρο), μειώνοντας δραστικά την ανάγκη
+Overfull \hbox (11.1398pt too wide) in paragraph at lines 18--21
+\TU/NotoSans(0)/m/n/12 που κάνει τον Google Dreamer V1 έναν ισχυρό και έξυπνο αλγόριθμο για την επίλυση
  []
 
-
-Overfull \hbox (23.34592pt too wide) in paragraph at lines 12--14
-[]\TU/NotoSans(0)/b/n/12 Αποδοτικότητα Πόρων: \TU/NotoSans(0)/m/n/12 Η στρατηγική χρήση ασπρόμαυρων εικόνων (grayscale)
- []
-
-<figures/training_overview.png, id=442, 859.0494pt x 591.1686pt>
-File: figures/training_overview.png Graphic file (type png)
-<use figures/training_overview.png>
-Package luatex.def Info: figures/training_overview.png  used on input line 18.
-(luatex.def)             Requested size: 409.71692pt x 281.9536pt.
-) [23
+) [25
 
 
 
-] [24<./figures/training_overview.png>]
+]
 \openout2 = chapters/references.aux
  (./chapters/references.tex
 Underfull \hbox (badness 3302) in paragraph at lines 4--8
@@ -1870,7 +1914,7 @@ Underfull \hbox (badness 1292) in paragraph at lines 39--42
 []\TU/NotoSans(0)/m/n/12 Farama Foundation. (2023). \TU/NotoSans(0)/m/it/12 Gymnasium: A Standard API for Reinforcement
  []
 
-) [25
+) [26
 
 
 
@@ -1976,24 +2020,27 @@ The property list \__xpg_alias contains the pairs (without outer braces):
 >  {newzealand/variant}  =>  {newzealand}
 >  {newzealand/options}  =>  {variant=newzealand}.
  (./main.aux (./chapters/title_page.aux) (./chapters/abstract.aux) (./chapters/introduction.aux) (./chapters/components.aux) (./chapters/algorithm.aux) (./chapters/experiments.aux) (./chapters/results.aux) (./chapters/conclusions.aux) (./chapters/references.aux))
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F5D77D5FA72BDEF6220F24D8569023F2;5282.
+(rerunfilecheck)             Checksum: 27C74A98A274022EB7968BDEFAF4D332;5527.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38450 strings out of 478285
+ 38464 strings out of 478285
  305311,1977958 words of node,token memory allocated
  718 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 4 glue, 5 kern, 1 penalty, 3 glyph, 24 attribute, 67 glue_spec, 24 attribute_list, 4 write, 3 pdf_action nodes
-   avail lists: 1:5,2:3519,3:324,4:7214,5:5582,6:98,7:8057,8:72,9:13731,10:31,11:477
- 56709 multiletter control sequences out of 65536+600000
+   avail lists: 1:5,2:3521,3:323,4:7214,5:5579,6:96,7:8067,8:72,9:13733,10:31,11:477
+ 56715 multiletter control sequences out of 65536+600000
  118 fonts using 60899607 bytes
  89i,13n,118p,1034b,1011s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texlive/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono-Oblique.ttf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono-Bold.ttf></usr/share/fonts/dejavu-sans-mono-fonts/DejaVuSansMono.ttf></usr/share/fonts/google-noto-vf/NotoSans-Italic[wght].ttf></usr/share/fonts/google-noto/NotoSans-Regular.ttf></usr/share/fonts/google-noto/NotoSans-Bold.ttf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (26 pages, 1115041 bytes).
+Output written on main.pdf (27 pages, 1232077 bytes).
 
-PDF statistics: 573 PDF objects out of 1000 (max. 8388607)
- 474 compressed objects within 5 object streams
- 204 named destinations out of 1000 (max. 131072)
+PDF statistics: 580 PDF objects out of 1000 (max. 8388607)
+ 478 compressed objects within 5 object streams
+ 206 named destinations out of 1000 (max. 131072)
  240 words of extra memory for PDF output out of 10000 (max. 100000000)
 
